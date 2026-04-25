@@ -1,0 +1,530 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>About — The Flatline Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a;--acc:#ff4500;--dead:#ff2525;--decay:#ff8c00;
+  --text:#f0ece5;--t2:#aaa;--t3:#555;--t4:#2a2a2a;
+  --mono:"IBM Plex Mono",monospace;--disp:"Bebas Neue",sans-serif;--serif:"Playfair Display",serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:rgba(255,69,0,.2)}
+
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;height:52px;z-index:900;
+  background:linear-gradient(to bottom,rgba(10,10,10,.98),rgba(10,10,10,0));
+  display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
+.nav-logo{font-family:var(--disp);font-size:13px;letter-spacing:5px;color:var(--t2);text-decoration:none;transition:color .2s}
+.nav-logo:hover{color:var(--text)}.nav-logo span{color:var(--acc)}
+.nav-back{font-size:8px;letter-spacing:2px;color:var(--t3);text-decoration:none;border:1px solid rgba(255,69,0,.15);padding:5px 12px;transition:all .18s}
+.nav-back:hover{color:var(--acc);border-color:var(--acc)}
+
+/* ── HERO ── */
+#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 32px 60px;overflow:hidden;text-align:center}
+.hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-bg svg{width:100%;height:100%;opacity:.06}
+.hero-eyebrow{font-size:7px;letter-spacing:5px;color:var(--acc);text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-title{font-family:var(--disp);font-size:clamp(52px,9vw,110px);letter-spacing:8px;line-height:.9;margin-bottom:32px;opacity:0;animation:fadeUp .8s .4s forwards}
+.hero-title em{color:var(--acc);font-style:normal}
+.hero-lead{max-width:620px;font-size:12px;line-height:1.95;color:var(--t2);letter-spacing:.3px;opacity:0;animation:fadeUp .8s .6s forwards}
+.hero-divider{width:1px;height:56px;background:linear-gradient(to bottom,transparent,rgba(255,69,0,.4),transparent);margin:40px auto;opacity:0;animation:fadeUp .8s .8s forwards}
+.hero-scroll{font-size:7px;letter-spacing:4px;color:var(--t3);text-transform:uppercase;opacity:0;animation:fadeUp .8s 1s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* ── LAYOUT ── */
+.page-section{border-top:1px solid rgba(255,255,255,.04);padding:80px 32px;scroll-margin-top:60px}
+.section-inner{max-width:1100px;margin:0 auto}
+.two-col{display:grid;grid-template-columns:260px 1fr;gap:80px;align-items:start}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+@media(max-width:800px){.two-col{grid-template-columns:1fr;gap:32px}.three-col{grid-template-columns:1fr}}
+.sticky-label{position:sticky;top:80px}
+.section-num{font-family:var(--disp);font-size:80px;letter-spacing:2px;line-height:1;color:rgba(255,255,255,.04);margin-bottom:-16px}
+.section-tag{font-size:7px;letter-spacing:5px;color:var(--acc);text-transform:uppercase;margin-bottom:10px;display:block}
+.section-heading{font-family:var(--disp);font-size:clamp(22px,3vw,36px);letter-spacing:4px;line-height:1.1;color:var(--text)}
+
+/* ── BODY TEXT ── */
+.body-text{font-size:11px;line-height:2;color:var(--t2)}
+.body-text p+p{margin-top:16px}
+.body-text a{color:var(--acc);text-decoration:none}.body-text a:hover{text-decoration:underline}
+.body-text strong{color:var(--text);font-weight:600}
+
+/* ── PARAMETER CARDS ── */
+.param-grid{display:flex;flex-direction:column;gap:2px;margin-top:8px}
+.param-card{padding:20px 24px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);transition:border-color .2s}
+.param-card:hover{border-color:rgba(255,69,0,.2)}
+.param-label{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+.param-text{font-size:10.5px;line-height:1.75;color:var(--t2)}
+
+/* ── METRIC ROWS ── */
+.metric-list{display:flex;flex-direction:column;gap:2px;margin-top:8px}
+.metric-row{display:grid;grid-template-columns:80px 1fr 48px;gap:20px;align-items:start;padding:18px 24px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);transition:border-color .2s}
+.metric-row:hover{border-color:rgba(255,69,0,.18)}
+.metric-cat{font-size:6.5px;letter-spacing:3px;text-transform:uppercase;color:var(--t3);white-space:nowrap;padding-top:2px}
+.metric-body{}
+.metric-name{font-size:10px;letter-spacing:1px;color:var(--text);margin-bottom:4px;font-weight:500}
+.metric-desc{font-size:10px;line-height:1.7;color:var(--t2)}
+.metric-pts{font-family:var(--disp);font-size:22px;letter-spacing:2px;color:var(--acc);white-space:nowrap;line-height:1;text-align:right}
+.metric-pts span{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--t3);display:block;text-align:right}
+
+/* ── SCORE TABLE ── */
+.score-table{width:100%;border-collapse:collapse;margin-top:24px}
+.score-table th{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--t3);text-align:left;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.06)}
+.score-table td{font-size:11px;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.04)}
+.score-table tr:last-child td{border-bottom:none}
+.score-table tr:hover td{background:rgba(255,255,255,.02)}
+.verdict-dead{color:var(--dead);font-weight:600}
+.verdict-decay{color:var(--decay);font-weight:600}
+.verdict-stress{color:#ffcc00;font-weight:600}
+.verdict-alive{color:var(--t2)}
+
+/* ── FORMULA BOX ── */
+.formula-box{background:rgba(255,255,255,.025);border:1px solid rgba(255,69,0,.2);padding:28px 32px;margin:28px 0;text-align:center}
+.formula-label{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--t3);margin-bottom:16px}
+.formula-eq{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--text);line-height:1.6}
+.formula-eq .frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 8px}
+.formula-eq .frac-num{border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:4px;margin-bottom:4px}
+.formula-eq .frac-den{}
+.formula-eq .times{color:var(--acc)}
+.formula-example{font-size:10px;color:var(--t3);margin-top:14px;line-height:1.6}
+
+/* ── EXCEPTIONS ── */
+.exception-list{display:flex;flex-direction:column;gap:2px;margin-top:16px}
+.exception-item{display:flex;gap:16px;padding:16px 20px;background:rgba(255,69,0,.04);border:1px solid rgba(255,69,0,.12)}
+.exception-dot{width:6px;height:6px;border-radius:50%;background:var(--acc);flex-shrink:0;margin-top:4px}
+.exception-text{font-size:10.5px;line-height:1.75;color:var(--t2)}
+
+/* ── DATA SOURCES ── */
+.source-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:8px}
+@media(max-width:640px){.source-grid{grid-template-columns:1fr}}
+.source-card{padding:22px 24px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);transition:border-color .2s}
+.source-card:hover{border-color:rgba(255,255,255,.1)}
+.source-name{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text);margin-bottom:6px;font-weight:500}
+.source-role{font-size:10px;line-height:1.65;color:var(--t2)}
+
+/* ── LIMITATIONS ── */
+.limit-list{display:flex;flex-direction:column;gap:2px;margin-top:8px}
+.limit-item{padding:22px 24px;background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.04);border-left:2px solid rgba(255,69,0,.3)}
+.limit-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text);margin-bottom:8px}
+.limit-body{font-size:10.5px;line-height:1.75;color:var(--t2)}
+
+/* ── CONTACT ── */
+#contact{background:rgba(255,69,0,.03);border-top:1px solid rgba(255,69,0,.1)}
+.contact-inner{max-width:1100px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:700px){.contact-inner{grid-template-columns:1fr;gap:32px}}
+.contact-heading{font-family:var(--disp);font-size:clamp(28px,4vw,52px);letter-spacing:4px;line-height:1}
+.contact-sub{font-size:11px;line-height:1.9;color:var(--t2);margin-top:12px}
+.contact-email{display:inline-flex;align-items:center;gap:12px;font-size:10px;letter-spacing:2px;color:var(--acc);text-decoration:none;border:1px solid rgba(255,69,0,.3);padding:14px 24px;transition:all .2s;margin-top:24px}
+.contact-email:hover{background:rgba(255,69,0,.08);border-color:var(--acc)}
+.contact-note{font-size:9px;line-height:1.7;color:var(--t3);margin-top:16px}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid rgba(255,255,255,.04);padding:36px 32px;display:flex;align-items:center;justify-content:space-between;font-size:8px;letter-spacing:2px;color:var(--t3)}
+.footer-pulse{display:flex;gap:2px;align-items:center}
+.footer-pulse span{display:inline-block;width:2px;border-radius:1px;background:var(--acc);animation:bp 1.4s ease-in-out infinite}
+.footer-pulse span:nth-child(1){height:4px}.footer-pulse span:nth-child(2){height:8px;animation-delay:.15s}.footer-pulse span:nth-child(3){height:5px;animation-delay:.3s}
+@keyframes bp{0%,100%{transform:scaleY(.3);opacity:.2}50%{transform:scaleY(1);opacity:1}}
+
+/* ── FADE IN ── */
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ── INLINE UTILS ── */
+.acc{color:var(--acc)}.dim{color:var(--t3)}.mt24{margin-top:24px}.mt8{margin-top:8px}
+blockquote{border-left:2px solid rgba(255,69,0,.3);padding:12px 20px;margin:20px 0;font-family:var(--serif);font-style:italic;font-size:14px;line-height:1.7;color:rgba(255,255,255,.45)}
+
+/* ── SHARED TOOLBAR ── */
+#tb{position:fixed;top:0;left:0;right:0;height:48px;z-index:900;background:linear-gradient(to bottom,rgba(10,10,10,0.98) 0%,rgba(10,10,10,0.0) 100%);display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
+.t-logo{font-family:var(--disp);font-size:15px;letter-spacing:5px;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);}
+.t-logo:hover{color:var(--text)}.t-logo span{color:var(--acc)}
+.t-pulse{display:flex;align-items:center;gap:2px}.t-pulse span{display:inline-block;width:3px;background:var(--acc);border-radius:1px;animation:tbp 1.4s ease-in-out infinite}
+.t-pulse span:nth-child(1){height:5px}.t-pulse span:nth-child(2){height:11px;animation-delay:.15s}.t-pulse span:nth-child(3){height:7px;animation-delay:.3s}.t-pulse span:nth-child(4){height:13px;animation-delay:.1s}.t-pulse span:nth-child(5){height:4px;animation-delay:.25s}
+@keyframes tbp{0%,100%{transform:scaleY(.3);opacity:.25}50%{transform:scaleY(1);opacity:1}}
+.t-nav{display:flex;gap:22px}.t-nav a{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--t2);text-decoration:none;transition:color .18s}.t-nav a:hover,.t-nav a.on{color:var(--acc)}
+</style></head>
+<body>
+
+<!-- TOOLBAR -->
+<header id="tb"><a href="flatline.html" class="t-logo">THE FLATLINE GALLERY<div class="t-pulse"><span></span><span></span><span></span><span></span><span></span></div></a><nav class="t-nav"><a href="flatline.html">Gallery</a><a href="about.html" class="on">About</a><a href="special_exhibit.html">Special Exhibit</a><a href="docs.html">Docs</a></nav><div></div></header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <svg viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" fill="none">
+      <line x1="0" y1="400" x2="1400" y2="400" stroke="#ff4500" stroke-width="0.5"/>
+      <line x1="700" y1="0" x2="700" y2="800" stroke="#ff4500" stroke-width="0.5"/>
+      <ellipse cx="700" cy="400" rx="580" ry="280" stroke="#ff4500" stroke-width="0.4"/>
+      <ellipse cx="700" cy="400" rx="380" ry="180" stroke="#ff4500" stroke-width="0.3"/>
+      <ellipse cx="700" cy="400" rx="180" ry="80" stroke="#ff4500" stroke-width="0.2"/>
+      <line x1="0" y1="0" x2="1400" y2="800" stroke="#ff4500" stroke-width="0.2"/>
+      <line x1="1400" y1="0" x2="0" y2="800" stroke="#ff4500" stroke-width="0.2"/>
+    </svg>
+  </div>
+  <h1 class="hero-title">ABOUT<br>THE <em>ARCHIVE</em></h1>
+  <p class="hero-lead">An archive of Ethereum NFT collections that traded during the 2021–2023 boom, but are no longer active as of April 2026. The NFT era produced thousands of projects, most of which have gone quiet. This mausoleum exists to record and learn from that history.</p>
+  <div class="hero-divider"></div>
+  <p class="hero-scroll">Scroll to read the methodology</p>
+</section>
+
+<!-- ── SECTION 01: SELECTION ── -->
+<section class="page-section" id="selection">
+<div class="section-inner">
+  <div class="two-col">
+    <div class="sticky-label fade-in">
+      <div class="section-num">01</div>
+      <span class="section-tag">Methodology</span>
+      <h2 class="section-heading">HOW COLLECTIONS WERE SELECTED</h2>
+    </div>
+    <div class="fade-in">
+      <p class="body-text">Our methodology focused on <strong>closed-lifecycle collections</strong> — assets with significant market traction during the 2021–2023 cycle that ceased trading activity prior to 2024, excluding utility-based protocols like ENS and shared marketplace storefronts.</p>
+
+      <div class="param-grid mt24">
+        <div class="param-card">
+          <div class="param-label">Trading Window</div>
+          <div class="param-text">Collections must have traded between February 2021 and September 2023.</div>
+        </div>
+        <div class="param-card">
+          <div class="param-label">Activity &amp; Liquidity</div>
+          <div class="param-text">To focus on high-impact projects, we required a minimum of 50 unique transactions and a total economic volume exceeding $1,000 USD.</div>
+        </div>
+        <div class="param-card">
+          <div class="param-label">The Death Criteria</div>
+          <div class="param-text">To hone in on completed lifecycles, the final recorded trade for the collection must have occurred before January 1, 2024.</div>
+        </div>
+        <div class="param-card">
+          <div class="param-label">Token Supply</div>
+          <div class="param-text">The dataset was limited to collections with a supply of 10,000+ tokens — the dominant format of the time and a consistent, culturally meaningful unit to work with.</div>
+        </div>
+        <div class="param-card">
+          <div class="param-label">Excluded Assets</div>
+          <div class="param-text">We explicitly filtered out non-standard or infrastructure-related contracts to prevent data skewing — ENS Registrar (domain names), infrastructure &amp; utility contracts, and Seaport &amp; OpenSea Shared Storefronts (generic aggregate contracts).</div>
+        </div>
+      </div>
+
+      <blockquote class="mt24">Scores are based on current state, not historical peak — so a project that did $15M in volume in 2021 but hasn't traded in 2 years would still be considered dead by today's standards.</blockquote>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── SECTION 02: METRICS ── -->
+<section class="page-section" id="metrics">
+<div class="section-inner">
+  <div class="two-col">
+    <div class="sticky-label fade-in">
+      <div class="section-num">02</div>
+      <span class="section-tag">Scoring</span>
+      <h2 class="section-heading">THE TEN SIGNALS</h2>
+      <p class="body-text mt24">Each collection runs through ten signals across five categories. Points accumulate where signals of death are present.</p>
+      <div style="margin-top:32px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:8px;letter-spacing:2px;color:var(--t3);text-transform:uppercase">Categories</div>
+        <div style="font-size:10px;color:var(--t2);padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05)">Liquidity</div>
+        <div style="font-size:10px;color:var(--t2);padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05)">Financial Health</div>
+        <div style="font-size:10px;color:var(--t2);padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05)">Social Presence</div>
+        <div style="font-size:10px;color:var(--t2);padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05)">Technical Integrity</div>
+        <div style="font-size:10px;color:var(--t2);padding:8px 0">Ownership Structure</div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="metric-list">
+
+        <div class="metric-row">
+          <div class="metric-cat">Liquidity</div>
+          <div class="metric-body">
+            <div class="metric-name">No trades for 60 consecutive days</div>
+            <div class="metric-desc">Two months without market activity may indicate a breakdown of price discovery and participant interest.</div>
+          </div>
+          <div class="metric-pts">2<span>pts</span></div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric-cat">Liquidity</div>
+          <div class="metric-body">
+            <div class="metric-name">30-day organic volume &lt;1% of floor value</div>
+            <div class="metric-desc">We strip out estimated wash trading and compare what's left to the collection's total value. Below 1% may indicate a market with no real demand.</div>
+          </div>
+          <div class="metric-pts">2<span>pts</span></div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric-cat">Financial</div>
+          <div class="metric-body">
+            <div class="metric-name">Active bids &lt;1% of supply</div>
+            <div class="metric-desc">When active bids represent less than 1% of the total token supply, the buy-side depth is insufficient to facilitate exits, rendering the asset illiquid.</div>
+          </div>
+          <div class="metric-pts">2<span>pts</span></div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric-cat">Financial</div>
+          <div class="metric-body">
+            <div class="metric-name">Top-10 bid ETH value &lt;1% of floor value</div>
+            <div class="metric-desc">Demonstrates a lack of significant capital commitment and shallow demand — remaining buy orders are negligible offers.</div>
+          </div>
+          <div class="metric-pts">1<span>pt</span></div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric-cat">Financial</div>
+          <div class="metric-body">
+            <div class="metric-name">More than 20% of supply listed for sale</div>
+            <div class="metric-desc">A high listing ratio indicates a one-sided market in a state of decline — high sell-side pressure with low bid density.</div>
+          </div>
+          <div class="metric-pts">1<span>pt</span></div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric-cat">Social</div>
+          <div class="metric-body">
+            <div class="metric-name">No Twitter post in 120+ days</div>
+            <div class="metric-desc">Four months of silence from a project's own account is a primary signal that management has abandoned active development and maintenance.</div>
+          </div>
+          <div class="metric-pts">3<span>pts</span></div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric-cat">Social</div>
+          <div class="metric-body">
+            <div class="metric-name">Discord server deleted or &lt;100 members</div>
+            <div class="metric-desc">An expired invite or server with fewer than 100 members represents the loss of the project's leading coordination mechanism. Deleted servers score 2 points; under 100 members scores 1.</div>
+          </div>
+          <div class="metric-pts">2<span>pts</span></div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric-cat">Social</div>
+          <div class="metric-body">
+            <div class="metric-name">Average engagement per tweet below 5</div>
+            <div class="metric-desc">Fewer than five interactions per post on average indicates that the community is no longer responsive to the project.</div>
+          </div>
+          <div class="metric-pts">2<span>pts</span></div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric-cat">Technical</div>
+          <div class="metric-body">
+            <div class="metric-name">More than 50% of tokens have broken metadata</div>
+            <div class="metric-desc">A failure rate exceeding 50% across a representative sample of 1,000 tokens indicates that technical overhead is no longer funded or maintained — resulting in permanent loss of the asset's core visual and functional components.</div>
+          </div>
+          <div class="metric-pts">3<span>pts</span></div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric-cat">Ownership</div>
+          <div class="metric-body">
+            <div class="metric-name">Top-10 wallets hold &gt;50% of supply</div>
+            <div class="metric-desc">High supply concentration eliminates organic price discovery and meaningful secondary trading — allowing the market to be manipulated by a nominal number of actors.</div>
+          </div>
+          <div class="metric-pts">1<span>pt</span></div>
+        </div>
+
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.05)">
+        <span style="font-size:8px;letter-spacing:2px;color:var(--t3);text-transform:uppercase">Total possible</span>
+        <span style="font-family:var(--disp);font-size:28px;letter-spacing:2px;color:var(--acc)">19</span>
+        <span style="font-size:8px;letter-spacing:2px;color:var(--t3);text-transform:uppercase">points</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── SECTION 03: SCORING SYSTEM ── -->
+<section class="page-section" id="scoring">
+<div class="section-inner">
+  <div class="two-col">
+    <div class="sticky-label fade-in">
+      <div class="section-num">03</div>
+      <span class="section-tag">Methodology</span>
+      <h2 class="section-heading">WHAT THE SCORE MEANS</h2>
+    </div>
+    <div class="fade-in">
+      <div class="body-text">
+        <p>Each collection receives a raw score by summing the points from triggered metrics. However, because dead collections often have missing data, the scoring system uses <strong>rescale normalization</strong> to produce a final score out of 22 to preserve the score spread.</p>
+        <p>The process follows three steps:</p>
+      </div>
+
+      <div class="param-grid mt24">
+        <div class="param-card">
+          <div class="param-label">Step 1 — Calculate Skipped Points</div>
+          <div class="param-text">The system identifies metrics that were skipped due to missing data and sums their point values.</div>
+        </div>
+        <div class="param-card">
+          <div class="param-label">Step 2 — Determine Max Available</div>
+          <div class="param-text">Skipped points are subtracted from the theoretical maximum to find the <strong style="color:var(--acc)">max_available</strong> points for that specific collection.</div>
+        </div>
+        <div class="param-card">
+          <div class="param-label">Step 3 — Apply the Rescale Formula</div>
+          <div class="param-text">The raw score is normalized against what was measurable, then scaled to 22.</div>
+        </div>
+      </div>
+
+      <div class="formula-box mt24">
+        <div class="formula-label">Rescale Formula</div>
+        <div class="formula-eq">
+          Rescaled Score = round&nbsp;
+          <span class="frac">
+            <span class="frac-num">Raw Score</span>
+            <span class="frac-den">Max Available</span>
+          </span>
+          <span class="times">&nbsp;&times;&nbsp;22</span>
+        </div>
+        <div class="formula-example">
+          Example: a collection with 10 points available that triggers 8 of them receives a rescaled score of&nbsp;<strong style="color:var(--acc)">18 / 22</strong>
+        </div>
+      </div>
+
+      <div class="body-text mt24"><p>Only <strong>Dead</strong> or <strong>Decaying</strong> collections are showcased in The Flatline Gallery.</p></div>
+
+      <table class="score-table mt24">
+        <thead>
+          <tr>
+            <th>Rescaled Score</th>
+            <th>Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>≥ 11</td>
+            <td class="verdict-dead">DEAD</td>
+          </tr>
+          <tr>
+            <td>7 – 10</td>
+            <td class="verdict-decay">Institutional Decay</td>
+          </tr>
+          <tr>
+            <td>4 – 6</td>
+            <td class="verdict-stress">Stressed / Declining</td>
+          </tr>
+          <tr>
+            <td>0 – 3</td>
+            <td class="verdict-alive">Alive or Recoverable</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="exception-list mt24">
+        <div style="font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--t3);margin-bottom:8px">Important Exceptions</div>
+        <div class="exception-item">
+          <div class="exception-dot"></div>
+          <div class="exception-text">If the rescaled score is <strong>16 or higher</strong>, the collection is marked <strong class="verdict-dead">DEAD</strong> even if there is insufficient data (fewer than 8 metrics with data).</div>
+        </div>
+        <div class="exception-item">
+          <div class="exception-dot"></div>
+          <div class="exception-text"><strong>Data Insufficient:</strong> If the rescaled score is under 16 <em>and</em> fewer than 8 metrics provided data, the verdict is flagged as "Data Insufficient" rather than a specific status. These collections were not included in the gallery because not enough signals were captured to make a reliable judgement.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── SECTION 04: DATA SOURCES ── -->
+<section class="page-section" id="sources">
+<div class="section-inner">
+  <div class="two-col">
+    <div class="sticky-label fade-in">
+      <div class="section-num">04</div>
+      <span class="section-tag">Infrastructure</span>
+      <h2 class="section-heading">DATA SOURCES</h2>
+      <p class="body-text mt24">The scoring system pulls from six independent sources to build a complete picture of each collection's state.</p>
+    </div>
+    <div class="fade-in">
+      <div class="source-grid">
+        <div class="source-card">
+          <div class="source-name">Dune Analytics</div>
+          <div class="source-role">Curates the primary dataset of closed-lifecycle collections — trading history, volume, and lifecycle parameters.</div>
+        </div>
+        <div class="source-card">
+          <div class="source-name">OKX NFT Marketplace API</div>
+          <div class="source-role">Provides floor prices, bid and listing data, and trade history as the primary market data source.</div>
+        </div>
+        <div class="source-card">
+          <div class="source-name">OpenSea API v2</div>
+          <div class="source-role">Serves as a fallback for collections that OKX doesn't index, ensuring broader coverage.</div>
+        </div>
+        <div class="source-card">
+          <div class="source-name">Alchemy NFT API</div>
+          <div class="source-role">Handles on-chain ownership data and metadata validation across representative token samples.</div>
+        </div>
+        <div class="source-card">
+          <div class="source-name">Apify Tweet Scraper</div>
+          <div class="source-role">Fetches recent Twitter activity to evaluate social presence and engagement patterns.</div>
+        </div>
+        <div class="source-card">
+          <div class="source-name">Discord Public API</div>
+          <div class="source-role">Checks whether project invite links resolve to live servers and evaluates member counts.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── SECTION 05: LIMITATIONS ── -->
+<section class="page-section" id="limitations">
+<div class="section-inner">
+  <div class="two-col">
+    <div class="sticky-label fade-in">
+      <div class="section-num">05</div>
+      <span class="section-tag">Transparency</span>
+      <h2 class="section-heading">LIMITATIONS</h2>
+      <p class="body-text mt24">No automated system can perfectly capture something as human and nuanced as an NFT project. Here are the key limitations to keep in mind.</p>
+    </div>
+    <div class="fade-in">
+      <div class="limit-list">
+        <div class="limit-item">
+          <div class="limit-title">Data Availability</div>
+          <div class="limit-body">Market APIs like OKX and OpenSea index collections they consider worth tracking, which means many abandoned projects return little or no market data at all. We rescale scores to compensate, but a collection scored on four signals is less certain than one scored on ten. This is why we included a confidence layer that tracks exactly where the gaps are. Confidence is assessed across seven dimensions: how many metrics had data (data completeness), whether the signals came from multiple independent categories or just one (signal consistency), how many trades were available to validate market signals (sales depth), how deep the bid data was, what percentage of the token supply was covered by the metadata sample, what fraction of owners we could measure, and how far the score sits from the nearest verdict boundary.</div>
+        </div>
+        <div class="limit-item">
+          <div class="limit-title">Unreliable Twitter &amp; Discord Information</div>
+          <div class="limit-body">Twitter accounts that have been suspended, banned, or renamed return no tweet data at all. In those cases, we default to treating the account as silent. This means some collections may be penalised on the Twitter silence metric not because the project went quiet, but because the specific handle in our dataset (obtained from OpenSea) is no longer active. The same applies to Discord invite links — an invalid link may reflect a renamed server rather than a deleted one.</div>
+        </div>
+        <div class="limit-item">
+          <div class="limit-title">Snapshot Scoring</div>
+          <div class="limit-body">Every collection in the gallery was scored at a single point in time. Occasionally a collection catches a second wind — a notable sale happens, or a community reorganises under new leadership. A project deemed dead from the analysis could look different six months later.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="fade-in">
+      <span class="section-tag">Objections &amp; Corrections</span>
+      <h2 class="contact-heading">GET IN<br>TOUCH</h2>
+      <p class="contact-sub">If you have any objections to the way a collection was scored, or notice an error in the data, we want to hear from you.</p>
+    </div>
+    <div class="fade-in">
+      <a href="mailto:theflatlinegallery@gmail.com" class="contact-email">
+        ✉ &nbsp; theflatlinegallery@gmail.com
+      </a>
+      <p class="contact-note">This archive is a research project. Scores reflect a methodology applied consistently across all collections — no collection was assessed individually or with editorial intent.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>THE FLATLINE GALLERY — ABOUT</div>
+  <div class="footer-pulse"><span></span><span></span><span></span></div>
+  <div>© 2024 — METHODOLOGY DOCUMENTATION</div>
+</footer>
+
+<script>
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+  });
+},{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(function(el){io.observe(el);});
+</script>
+</body></html>

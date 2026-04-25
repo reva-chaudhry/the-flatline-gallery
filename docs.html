@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Docs — The Flatline Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a;--acc:#ff4500;--dead:#ff2525;--decay:#ff8c00;
+  --text:#f0ece5;--t2:#aaa;--t3:#555;--t4:#2a2a2a;
+  --mono:"IBM Plex Mono",monospace;--disp:"Bebas Neue",sans-serif;--serif:"Playfair Display",serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:rgba(255,69,0,.2)}
+
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;height:52px;z-index:900;
+  background:linear-gradient(to bottom,rgba(10,10,10,.98),rgba(10,10,10,0));
+  display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
+.nav-logo{font-family:var(--disp);font-size:13px;letter-spacing:5px;color:var(--t2);text-decoration:none;transition:color .2s}
+.nav-logo:hover{color:var(--text)}.nav-logo span{color:var(--acc)}
+.nav-back{font-size:8px;letter-spacing:2px;color:var(--t3);text-decoration:none;border:1px solid rgba(255,69,0,.15);padding:5px 12px;transition:all .18s}
+.nav-back:hover{color:var(--acc);border-color:var(--acc)}
+
+/* ── HERO ── */
+#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 32px 60px;overflow:hidden;text-align:center}
+.hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-bg svg{width:100%;height:100%;opacity:.06}
+.hero-eyebrow{font-size:7px;letter-spacing:5px;color:var(--acc);text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-title{font-family:var(--disp);font-size:clamp(52px,9vw,110px);letter-spacing:8px;line-height:.9;margin-bottom:32px;opacity:0;animation:fadeUp .8s .4s forwards}
+.hero-title em{color:var(--acc);font-style:normal}
+.hero-lead{max-width:560px;font-size:12px;line-height:1.95;color:var(--t2);letter-spacing:.3px;opacity:0;animation:fadeUp .8s .6s forwards}
+.hero-divider{width:1px;height:56px;background:linear-gradient(to bottom,transparent,rgba(255,69,0,.4),transparent);margin:40px auto;opacity:0;animation:fadeUp .8s .8s forwards}
+.hero-scroll{font-size:7px;letter-spacing:4px;color:var(--t3);text-transform:uppercase;opacity:0;animation:fadeUp .8s 1s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* ── LAYOUT ── */
+.page-section{border-top:1px solid rgba(255,255,255,.04);padding:80px 32px;scroll-margin-top:60px}
+.section-inner{max-width:1100px;margin:0 auto}
+.two-col{display:grid;grid-template-columns:260px 1fr;gap:80px;align-items:start}
+@media(max-width:800px){.two-col{grid-template-columns:1fr;gap:32px}}
+.sticky-label{position:sticky;top:80px}
+.section-num{font-family:var(--disp);font-size:80px;letter-spacing:2px;line-height:1;color:rgba(255,255,255,.04);margin-bottom:-16px}
+.section-tag{font-size:7px;letter-spacing:5px;color:var(--acc);text-transform:uppercase;margin-bottom:10px;display:block}
+.section-heading{font-family:var(--disp);font-size:clamp(22px,3vw,36px);letter-spacing:4px;line-height:1.1;color:var(--text)}
+
+/* ── BODY TEXT ── */
+.body-text{font-size:11px;line-height:2;color:var(--t2)}
+.body-text p+p{margin-top:16px}
+.body-text a{color:var(--acc);text-decoration:none}.body-text a:hover{text-decoration:underline}
+.body-text strong{color:var(--text);font-weight:600}
+
+/* ── REPO CARD ── */
+.repo-card{display:flex;flex-direction:column;gap:20px;margin-top:8px}
+.repo-link-wrap{display:flex;flex-direction:column;gap:12px}
+.repo-cta{display:inline-flex;align-items:center;gap:14px;text-decoration:none;border:1px solid rgba(255,69,0,.35);padding:22px 28px;background:rgba(255,69,0,.03);transition:all .2s;position:relative;overflow:hidden}
+.repo-cta::before{content:"";position:absolute;inset:0;background:rgba(255,69,0,.05);opacity:0;transition:opacity .2s}
+.repo-cta:hover{border-color:var(--acc);background:rgba(255,69,0,.07)}
+.repo-cta:hover::before{opacity:1}
+.repo-icon{width:32px;height:32px;flex-shrink:0;opacity:.7}
+.repo-cta:hover .repo-icon{opacity:1}
+.repo-cta-text{}
+.repo-cta-label{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--t3);margin-bottom:4px}
+.repo-cta-name{font-family:var(--disp);font-size:22px;letter-spacing:3px;color:var(--text)}
+.repo-cta-url{font-size:8.5px;letter-spacing:1px;color:var(--acc);margin-top:2px}
+.repo-arrow{margin-left:auto;font-size:18px;color:rgba(255,255,255,.15);transition:all .2s;flex-shrink:0}
+.repo-cta:hover .repo-arrow{color:var(--acc);transform:translateX(4px)}
+.repo-note{font-size:9px;line-height:1.75;color:var(--t3);border-left:2px solid rgba(255,69,0,.2);padding-left:14px;margin-top:4px}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid rgba(255,255,255,.04);padding:36px 32px;display:flex;align-items:center;justify-content:space-between;font-size:8px;letter-spacing:2px;color:var(--t3)}
+.footer-pulse{display:flex;gap:2px;align-items:center}
+.footer-pulse span{display:inline-block;width:2px;border-radius:1px;background:var(--acc);animation:bp 1.4s ease-in-out infinite}
+.footer-pulse span:nth-child(1){height:4px}.footer-pulse span:nth-child(2){height:8px;animation-delay:.15s}.footer-pulse span:nth-child(3){height:5px;animation-delay:.3s}
+@keyframes bp{0%,100%{transform:scaleY(.3);opacity:.2}50%{transform:scaleY(1);opacity:1}}
+
+/* ── FADE IN ── */
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ── UTILS ── */
+.acc{color:var(--acc)}.dim{color:var(--t3)}.mt24{margin-top:24px}.mt8{margin-top:8px}
+
+/* ── SHARED TOOLBAR ── */
+#tb{position:fixed;top:0;left:0;right:0;height:48px;z-index:900;background:linear-gradient(to bottom,rgba(10,10,10,0.98) 0%,rgba(10,10,10,0.0) 100%);display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
+.t-logo{font-family:var(--disp);font-size:15px;letter-spacing:5px;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);}
+.t-logo:hover{color:var(--text)}.t-logo span{color:var(--acc)}
+.t-pulse{display:flex;align-items:center;gap:2px}.t-pulse span{display:inline-block;width:3px;background:var(--acc);border-radius:1px;animation:tbp 1.4s ease-in-out infinite}
+.t-pulse span:nth-child(1){height:5px}.t-pulse span:nth-child(2){height:11px;animation-delay:.15s}.t-pulse span:nth-child(3){height:7px;animation-delay:.3s}.t-pulse span:nth-child(4){height:13px;animation-delay:.1s}.t-pulse span:nth-child(5){height:4px;animation-delay:.25s}
+@keyframes tbp{0%,100%{transform:scaleY(.3);opacity:.25}50%{transform:scaleY(1);opacity:1}}
+.t-nav{display:flex;gap:22px}.t-nav a{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--t2);text-decoration:none;transition:color .18s}.t-nav a:hover,.t-nav a.on{color:var(--acc)}
+</style></head>
+<body>
+
+<!-- TOOLBAR -->
+<header id="tb"><a href="flatline.html" class="t-logo">THE FLATLINE GALLERY<div class="t-pulse"><span></span><span></span><span></span><span></span><span></span></div></a><nav class="t-nav"><a href="flatline.html">Gallery</a><a href="about.html">About</a><a href="special_exhibit.html">Special Exhibit</a><a href="docs.html" class="on">Docs</a></nav><div></div></header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <svg viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" fill="none">
+      <line x1="0" y1="400" x2="1400" y2="400" stroke="#ff4500" stroke-width="0.5"/>
+      <line x1="700" y1="0" x2="700" y2="800" stroke="#ff4500" stroke-width="0.5"/>
+      <ellipse cx="700" cy="400" rx="580" ry="280" stroke="#ff4500" stroke-width="0.4"/>
+      <ellipse cx="700" cy="400" rx="380" ry="180" stroke="#ff4500" stroke-width="0.3"/>
+      <ellipse cx="700" cy="400" rx="180" ry="80" stroke="#ff4500" stroke-width="0.2"/>
+      <line x1="0" y1="0" x2="1400" y2="800" stroke="#ff4500" stroke-width="0.2"/>
+      <line x1="1400" y1="0" x2="0" y2="800" stroke="#ff4500" stroke-width="0.2"/>
+    </svg>
+  </div>
+  <p class="hero-eyebrow">Open Source</p>
+  <h1 class="hero-title">THE<br><em>REPOSITORY</em></h1>
+  <p class="hero-lead">Please explore our GitHub repository to further understand our framework, process, and code for developing this gallery.</p>
+  <div class="hero-divider"></div>
+  <p class="hero-scroll">Scroll to explore</p>
+</section>
+
+<!-- SECTION: REPOSITORY -->
+<section class="page-section" id="repository">
+<div class="section-inner">
+  <div class="two-col">
+    <div class="sticky-label fade-in">
+      <div class="section-num">01</div>
+      <span class="section-tag">Source Code</span>
+      <h2 class="section-heading">GITHUB REPOSITORY</h2>
+      <p class="body-text mt24">The full codebase for the classifier, data pipeline, and scoring framework is publicly available and open for review.</p>
+    </div>
+    <div class="fade-in">
+      <div class="repo-card">
+        <a href="https://github.com/reva-chaudhry/Dead-NFT-Classifier" target="_blank" rel="noopener" class="repo-cta">
+          <!-- GitHub mark icon -->
+          <svg class="repo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" fill="#ff4500"/>
+          </svg>
+          <div class="repo-cta-text">
+            <div class="repo-cta-label">View on GitHub</div>
+            <div class="repo-cta-name">Dead-NFT-Classifier</div>
+            <div class="repo-cta-url">github.com/reva-chaudhry/Dead-NFT-Classifier</div>
+          </div>
+          <div class="repo-arrow">→</div>
+        </a>
+        <p class="repo-note">Opens in a new tab. The repository contains the full scoring framework, data pipeline, API integration code, and documentation for the classifier that powers this gallery.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>THE FLATLINE GALLERY — DOCS</div>
+  <div class="footer-pulse"><span></span><span></span><span></span></div>
+  <div>© 2024 — OPEN SOURCE</div>
+</footer>
+
+<script>
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+  });
+},{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(function(el){io.observe(el);});
+</script>
+</body></html>

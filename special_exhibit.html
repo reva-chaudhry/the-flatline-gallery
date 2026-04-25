@@ -1,0 +1,533 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Institutional Death — Special Exhibit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0a;--bg2:#0f0f0f;--acc:#ff4500;--dead:#ff2525;--decay:#ff8c00;--text:#f0ece5;--t2:#aaa;--t3:#555;--t4:#333;--mono:"IBM Plex Mono",monospace;--disp:"Bebas Neue",sans-serif;--serif:"Playfair Display",serif;--layer1:#ff2525;--layer2:#ff8c00;--layer3:#ffcc00;--layer4:#4a9eff;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:rgba(255,69,0,.2)}
+#nav{position:fixed;top:0;left:0;right:0;height:52px;z-index:900;background:linear-gradient(to bottom,rgba(10,10,10,.98),rgba(10,10,10,.0));display:flex;align-items:center;justify-content:space-between;padding:0 32px;}
+.nav-logo{font-family:var(--disp);font-size:13px;letter-spacing:5px;color:var(--t2);text-decoration:none;transition:color .2s}
+.nav-logo:hover{color:var(--text)}.nav-logo span{color:var(--acc)}
+.nav-back{font-size:8px;letter-spacing:2px;color:var(--t3);text-decoration:none;border:1px solid rgba(255,69,0,.15);padding:5px 12px;transition:all .18s}
+.nav-back:hover{color:var(--acc);border-color:var(--acc)}
+#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 32px 60px;overflow:hidden}
+.hero-bg-lines{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-bg-lines svg{width:100%;height:100%;opacity:.07}
+.hero-tag{font-size:7px;letter-spacing:5px;color:var(--acc);text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-title{font-family:var(--disp);font-size:clamp(56px,10vw,120px);letter-spacing:8px;text-align:center;line-height:.9;margin-bottom:28px;opacity:0;animation:fadeUp .8s .4s forwards}
+.hero-title span{color:var(--acc)}
+.hero-subtitle{max-width:680px;text-align:center;font-size:11px;line-height:1.9;color:var(--t2);letter-spacing:.5px;opacity:0;animation:fadeUp .8s .6s forwards}
+.hero-divider{width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(255,69,0,.4),transparent);margin:40px auto;opacity:0;animation:fadeUp .8s .8s forwards}
+.hero-scroll{font-size:7px;letter-spacing:4px;color:var(--t3);text-transform:uppercase;opacity:0;animation:fadeUp .8s 1s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.section{padding:80px 32px;max-width:1100px;margin:0 auto}
+.section-tag{font-size:7px;letter-spacing:5px;color:var(--acc);text-transform:uppercase;margin-bottom:12px}
+.section-title{font-family:var(--disp);font-size:clamp(28px,4vw,48px);letter-spacing:4px;margin-bottom:24px}
+.section-body{font-size:11px;line-height:2;color:var(--t2);max-width:760px}
+#menu{padding:0 32px 80px;max-width:1100px;margin:0 auto}
+.menu-header{text-align:center;margin-bottom:56px}
+.menu-header .section-tag{text-align:center}
+.menu-header h2{font-family:var(--disp);font-size:clamp(22px,3vw,38px);letter-spacing:5px;margin-bottom:12px}
+.menu-header p{font-size:10px;color:var(--t3);letter-spacing:2px}
+.layers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+@media(max-width:640px){.layers-grid{grid-template-columns:1fr}}
+.layer-card{position:relative;padding:36px 32px 28px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);cursor:pointer;transition:all .22s;overflow:hidden;text-decoration:none;display:block}
+.layer-card::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .22s}
+.layer-card:hover{border-color:rgba(255,255,255,.1);background:rgba(255,255,255,.04);transform:translateY(-2px)}
+.layer-card:hover::before{opacity:1}
+.layer-card.l1::before{background:linear-gradient(135deg,rgba(255,37,37,.06),transparent)}
+.layer-card.l2::before{background:linear-gradient(135deg,rgba(255,140,0,.06),transparent)}
+.layer-card.l3::before{background:linear-gradient(135deg,rgba(255,204,0,.06),transparent)}
+.layer-card.l4::before{background:linear-gradient(135deg,rgba(74,158,255,.06),transparent)}
+.layer-card.lc::before{background:linear-gradient(135deg,rgba(255,69,0,.04),transparent)}
+.layer-num{font-family:var(--disp);font-size:64px;letter-spacing:2px;line-height:1;margin-bottom:8px;opacity:.12}
+.layer-card.l1 .layer-num{color:var(--layer1)}.layer-card.l2 .layer-num{color:var(--layer2)}.layer-card.l3 .layer-num{color:var(--layer3)}.layer-card.l4 .layer-num{color:var(--layer4)}.layer-card.lc .layer-num{color:var(--acc)}
+.layer-label{font-size:7px;letter-spacing:4px;text-transform:uppercase;margin-bottom:6px}
+.layer-card.l1 .layer-label{color:var(--layer1)}.layer-card.l2 .layer-label{color:var(--layer2)}.layer-card.l3 .layer-label{color:var(--layer3)}.layer-card.l4 .layer-label{color:var(--layer4)}.layer-card.lc .layer-label{color:var(--acc)}
+.layer-name{font-family:var(--disp);font-size:clamp(18px,2.5vw,28px);letter-spacing:3px;margin-bottom:10px}
+.layer-def{font-size:10px;line-height:1.7;color:var(--t2);margin-bottom:20px}
+.layer-exhibits{display:flex;gap:8px;flex-wrap:wrap}
+.layer-exhibit-pill{font-size:7.5px;letter-spacing:1px;padding:3px 8px;border-radius:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:var(--t3)}
+.layer-arrow{position:absolute;bottom:20px;right:24px;font-size:18px;color:rgba(255,255,255,.1);transition:all .22s}
+.layer-card:hover .layer-arrow{color:var(--acc);transform:translateX(4px)}
+.layer-card.lc{grid-column:1/-1}
+.exhibit-section{border-top:1px solid rgba(255,255,255,.04);padding:80px 32px;scroll-margin-top:60px}
+.exhibit-section-inner{max-width:1100px;margin:0 auto}
+.exhibit-section-header{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start;margin-bottom:60px}
+.exhibit-layer-badge{display:inline-flex;align-items:center;gap:8px;font-size:7px;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px}
+.exhibit-layer-dot{width:6px;height:6px;border-radius:50%}
+.exhibit-section-title{font-family:var(--disp);font-size:clamp(28px,4vw,52px);letter-spacing:4px;line-height:1}
+.exhibit-section-summary{font-size:11px;line-height:1.9;color:var(--t2);margin-top:16px;max-width:560px}
+.exhibit-section-quote{font-family:var(--serif);font-style:italic;font-size:14px;line-height:1.7;color:rgba(255,255,255,.35);max-width:280px;text-align:right;padding-left:24px;border-right:2px solid rgba(255,255,255,.06)}
+.exhibit{display:grid;grid-template-columns:280px 1fr;gap:0;margin-bottom:2px;background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.04);transition:border-color .2s}
+.exhibit:hover{border-color:rgba(255,255,255,.08)}
+@media(max-width:800px){.exhibit{grid-template-columns:1fr}}
+.exhibit-img{position:relative;overflow:hidden;background:#111;min-height:220px}
+.exhibit-img img{width:100%;height:100%;object-fit:cover;opacity:.7;transition:opacity .3s;display:block}
+.exhibit-img:hover img{opacity:.9}
+.exhibit-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.3),transparent)}
+.exhibit-num{position:absolute;top:12px;left:12px;font-family:var(--disp);font-size:32px;letter-spacing:2px;opacity:.3;line-height:1}
+.exhibit-verdict-badge{position:absolute;bottom:12px;left:12px;font-size:7px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border-radius:1px}
+.vb-dead{background:rgba(180,8,8,.85);color:#ff9090;border:1px solid rgba(255,37,37,.4)}
+.vb-decay{background:rgba(140,70,0,.85);color:#ffb060;border:1px solid rgba(255,140,0,.4)}
+.vb-stress{background:rgba(100,100,0,.85);color:#ffee60;border:1px solid rgba(255,220,0,.4)}
+.vb-insuf{background:rgba(60,60,60,.85);color:#aaa;border:1px solid rgba(255,255,255,.15)}
+.exhibit-content{padding:28px 32px;display:flex;flex-direction:column;gap:14px}
+.exhibit-label{font-size:7px;letter-spacing:4px;color:var(--t3);text-transform:uppercase}
+.exhibit-name{font-family:var(--serif);font-style:italic;font-weight:700;font-size:20px;line-height:1.2;color:var(--text)}
+.exhibit-analysis{font-size:10.5px;line-height:1.85;color:rgba(255,255,255,.5)}
+.exhibit-analysis p+p{margin-top:10px}
+.exhibit-cta{display:inline-flex;align-items:center;gap:8px;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--acc);cursor:pointer;border:none;background:none;padding:0;margin-top:4px;transition:gap .15s}
+.exhibit-cta:hover{gap:12px}.exhibit-cta-arrow{font-size:12px}
+#dov{position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.94);backdrop-filter:blur(20px);display:none;overflow-y:auto;overflow-x:hidden}
+#dov.on{display:block}
+#dmodal-wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:70px 20px 50px;box-sizing:border-box}
+#dmodal{width:100%;max-width:520px;animation:mIn .3s cubic-bezier(.4,0,.2,1)}
+@keyframes mIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+.dmcb{position:fixed;top:14px;right:14px;z-index:900}
+.dmxb{width:26px;height:26px;background:rgba(10,10,10,.95);border:1px solid rgba(255,255,255,.1);color:var(--t2);cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;transition:all .14s;font-family:var(--mono);border-radius:1px}.dmxb:hover{border-color:var(--acc);color:var(--acc)}
+.ts-arch-top{position:relative;height:68px}
+.ts-arch-top::before{content:"";position:absolute;bottom:0;left:0;right:0;height:136px;border:1.5px solid rgba(255,69,0,.55);border-bottom:none;border-radius:50% 50% 0 0/100% 100% 0 0;background:linear-gradient(180deg,#0e0b0b,#0c0a0a)}
+.ts-arch-top::after{content:"";position:absolute;bottom:0;left:9%;right:9%;height:110px;border:1px solid rgba(255,69,0,.12);border-bottom:none;border-radius:50% 50% 0 0/100% 100% 0 0}
+.ts-arch-icon{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center}
+.ts-cv{width:1px;height:22px;background:rgba(255,69,0,.45)}.ts-ch{width:16px;height:1px;background:rgba(255,69,0,.45);margin-top:-14px}.ts-cdot{width:3px;height:3px;border-radius:50%;background:rgba(255,69,0,.55);margin-top:10px}
+.ts-body{background:linear-gradient(180deg,#0d0b0b,#0a0a0a 40%,#090909);border:1.5px solid rgba(255,69,0,.55);border-top:none;padding:8px 36px 22px}
+.ts-hl{display:flex;align-items:center;gap:8px;margin-bottom:8px}.ts-hl-rule{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,69,0,.4),transparent)}.ts-hl-txt{font-size:7px;letter-spacing:5px;color:rgba(255,69,0,.6);text-transform:uppercase;white-space:nowrap}
+.ts-name{font-family:var(--serif);font-style:italic;font-weight:700;font-size:22px;line-height:1.2;color:#f0ece5;text-align:center;margin-bottom:4px;word-break:break-word}
+.ts-dates{font-family:var(--disp);font-size:12px;letter-spacing:7px;color:rgba(255,69,0,.5);text-align:center;margin-bottom:10px}
+.ts-badges{display:flex;gap:6px;justify-content:center;margin-bottom:10px}
+.mbd{font-family:var(--mono);font-size:7px;letter-spacing:2px;font-weight:600;text-transform:uppercase;padding:2px 9px;border-radius:1px}
+.bdd{background:rgba(180,8,8,.18);color:#ff4040;border:1px solid rgba(200,10,10,.4)}.bdc{background:rgba(160,90,0,.16);color:#ffaa00;border:1px solid rgba(180,100,0,.38)}.bds{background:rgba(100,100,0,.16);color:#ffee60;border:1px solid rgba(200,200,0,.3)}.bdi{background:rgba(60,60,60,.18);color:#aaa;border:1px solid rgba(255,255,255,.12)}
+.ts-orn{text-align:center;margin:6px 0 8px;color:rgba(255,69,0,.28);font-size:11px;letter-spacing:5px}
+.mct{font-size:8.5px;color:var(--t3);margin-bottom:3px;word-break:break-all;text-align:center}.mct a{color:rgba(255,69,0,.5);text-decoration:none}.mct a:hover{color:var(--acc)}
+.mos{font-size:9.5px;margin-bottom:10px;text-align:center}.mos a{color:#5a6bcc;text-decoration:none}.mos a:hover{text-decoration:underline}
+.ts-div{width:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,69,0,.22),transparent);margin:10px auto}
+.ts-insuf{background:rgba(40,40,40,.6);border:1px solid rgba(255,255,255,.08);border-radius:1px;padding:10px 14px;margin-bottom:10px;text-align:center}
+.ts-insuf-lbl{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);display:block;margin-bottom:3px}.ts-insuf-val{font-size:10px;color:rgba(255,255,255,.4);letter-spacing:1px}
+.ts-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px 16px;margin-bottom:12px}
+.mi{display:flex;flex-direction:column;gap:2px}.ml{font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--t3)}.mv{font-size:11px;color:var(--text);line-height:1.4}.mv.ac{color:var(--acc);font-weight:600}.mv.rd{color:var(--dead);font-weight:600}
+.mmt{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,69,0,.38);margin-bottom:7px;border-top:1px solid rgba(255,255,255,.05);padding-top:9px}
+.cfr{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;padding-top:10px;border-top:1px solid rgba(255,255,255,.05)}
+.cfi{display:flex;flex-direction:column;gap:2px}.cfl{font-size:6.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--t3);line-height:1.3}.cfv{font-size:10px;font-weight:600;letter-spacing:.5px}
+.mmt2{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,69,0,.38);margin-bottom:7px;border-top:1px solid rgba(255,255,255,.05);padding-top:9px;}
+.mch{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:9px;}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:4px 7px;border-radius:1px;font-family:var(--mono);font-size:8px;letter-spacing:.5px;text-transform:uppercase;cursor:default;border:1px solid transparent;position:relative;transition:border-color .12s;}
+.chip:hover{z-index:20;}
+.chit{background:rgba(255,37,37,.08);color:#ff4444;border-color:rgba(255,37,37,.2);}.chit:hover{border-color:rgba(255,37,37,.5);}
+.cmiss{background:rgba(46,204,113,.06);color:#2ecc71;border-color:rgba(46,204,113,.16);}.cmiss:hover{border-color:rgba(46,204,113,.4);}
+.cskip{background:transparent;color:rgba(255,255,255,.18);border-color:rgba(255,255,255,.06);}
+.cdot{width:4px;height:4px;border-radius:50%;flex-shrink:0;}
+.chit .cdot{background:#ff4444;}.cmiss .cdot{background:#2ecc71;}.cskip .cdot{background:rgba(255,255,255,.12);}
+.cpt{font-size:7px;opacity:.4;}
+.ctip{display:none;position:absolute;bottom:calc(100%+5px);left:0;background:#0a0a0a;border:1px solid rgba(255,69,0,.22);padding:8px 10px;font-size:9px;line-height:1.6;color:rgba(255,255,255,.62);z-index:600;min-width:200px;max-width:270px;white-space:normal;pointer-events:none;}
+.ctip strong{color:var(--text);display:block;margin-bottom:3px;}
+.chip:hover .ctip{display:block;}
+.H{color:#2ecc71}.M{color:var(--decay)}.L{color:#ff4444}
+.ts-rip{text-align:center;padding:14px 0 6px;font-family:var(--disp);font-size:12px;letter-spacing:10px;color:rgba(255,69,0,.22)}.ts-base{width:35%;height:1px;background:rgba(255,69,0,.12);margin:0 auto}
+.failure-summary{margin-top:48px;padding:28px 32px;border-left:2px solid;background:rgba(255,255,255,.02)}
+.failure-summary.l1{border-color:var(--layer1)}.failure-summary.l2{border-color:var(--layer2)}.failure-summary.l3{border-color:var(--layer3)}.failure-summary.l4{border-color:var(--layer4)}
+.failure-summary-lbl{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:var(--t3);margin-bottom:8px}
+.failure-summary-text{font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.75;color:rgba(255,255,255,.65)}
+#rationale{border-top:1px solid rgba(255,255,255,.04);background:rgba(255,255,255,.01)}
+.rationale-inner{max-width:1100px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:280px 1fr;gap:64px;align-items:start}
+@media(max-width:700px){.rationale-inner{grid-template-columns:1fr;gap:32px}}
+.rationale-label{font-family:var(--disp);font-size:36px;letter-spacing:4px;color:var(--t4);line-height:1.1;position:sticky;top:80px}
+.rationale-label span{display:block;font-size:10px;letter-spacing:4px;color:var(--t3);font-family:var(--mono);margin-bottom:8px}
+.rationale-body{font-size:11px;line-height:2;color:var(--t2)}.rationale-body p+p{margin-top:16px}
+footer{border-top:1px solid rgba(255,255,255,.04);padding:40px 32px;display:flex;align-items:center;justify-content:space-between;font-size:8px;letter-spacing:2px;color:var(--t3)}
+footer a{color:var(--t3);text-decoration:none;transition:color .15s}footer a:hover{color:var(--acc)}
+.footer-pulse{display:flex;gap:2px;align-items:center}
+.footer-pulse span{display:inline-block;width:2px;border-radius:1px;background:var(--acc);animation:bp 1.4s ease-in-out infinite}
+.footer-pulse span:nth-child(1){height:4px}.footer-pulse span:nth-child(2){height:8px;animation-delay:.15s}.footer-pulse span:nth-child(3){height:5px;animation-delay:.3s}
+@keyframes bp{0%,100%{transform:scaleY(.3);opacity:.2}50%{transform:scaleY(1);opacity:1}}
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ── SHARED TOOLBAR ── */
+#tb{position:fixed;top:0;left:0;right:0;height:48px;z-index:900;background:linear-gradient(to bottom,rgba(10,10,10,0.98) 0%,rgba(10,10,10,0.0) 100%);display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
+.t-logo{font-family:var(--disp);font-size:15px;letter-spacing:5px;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);}
+.t-logo:hover{color:var(--text)}.t-logo span{color:var(--acc)}
+.t-pulse{display:flex;align-items:center;gap:2px}.t-pulse span{display:inline-block;width:3px;background:var(--acc);border-radius:1px;animation:tbp 1.4s ease-in-out infinite}
+.t-pulse span:nth-child(1){height:5px}.t-pulse span:nth-child(2){height:11px;animation-delay:.15s}.t-pulse span:nth-child(3){height:7px;animation-delay:.3s}.t-pulse span:nth-child(4){height:13px;animation-delay:.1s}.t-pulse span:nth-child(5){height:4px;animation-delay:.25s}
+@keyframes tbp{0%,100%{transform:scaleY(.3);opacity:.25}50%{transform:scaleY(1);opacity:1}}
+.t-nav{display:flex;gap:22px}.t-nav a{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--t2);text-decoration:none;transition:color .18s}.t-nav a:hover,.t-nav a.on{color:var(--acc)}
+</style></head>
+<body>
+
+<header id="tb"><a href="flatline.html" class="t-logo">THE FLATLINE GALLERY<div class="t-pulse"><span></span><span></span><span></span><span></span><span></span></div></a><nav class="t-nav"><a href="flatline.html">Gallery</a><a href="about.html">About</a><a href="special_exhibit.html" class="on">Special Exhibit</a><a href="docs.html">Docs</a></nav><div></div></header>
+
+<section id="hero">
+  <div class="hero-bg-lines">
+    <svg viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" fill="none">
+      <line x1="0" y1="400" x2="1400" y2="400" stroke="#ff4500" stroke-width="0.5"/>
+      <line x1="700" y1="0" x2="700" y2="800" stroke="#ff4500" stroke-width="0.5"/>
+      <ellipse cx="700" cy="400" rx="600" ry="300" stroke="#ff4500" stroke-width="0.4"/>
+      <ellipse cx="700" cy="400" rx="400" ry="200" stroke="#ff4500" stroke-width="0.3"/>
+      <ellipse cx="700" cy="400" rx="200" ry="100" stroke="#ff4500" stroke-width="0.2"/>
+      <line x1="0" y1="0" x2="1400" y2="800" stroke="#ff4500" stroke-width="0.2"/>
+      <line x1="1400" y1="0" x2="0" y2="800" stroke="#ff4500" stroke-width="0.2"/>
+    </svg>
+  </div>
+  <div class="hero-tag">Special Exhibit — The Mausoleum</div>
+  <h1 class="hero-title">INSTITUTIONAL<br><span>DEATH</span></h1>
+  <p class="hero-subtitle">A central curatorial principle of this exhibition is the distinction between financial decline and institutional death. While many NFT projects in the museum exhibit severe reductions in trading volume, price, or visibility, these signals alone are insufficient to determine whether an institution has collapsed. Instead, institutional death is defined as the dissolution of shared expectations, breakdown of enforcement mechanisms, and cessation of meaningful participation. Under this definition, several projects commonly perceived as "dead" are more accurately understood as existing in a state of dormant persistence, where activity has declined but institutional structures remain intact.<br><br>Projects such as Gods Unchained and Wolf Game illustrate this distinction. In both systems, participation has decreased and financial signals have weakened, yet core institutional elements—rules, norms, and behavioral expectations—continue to function. Players still understand how to engage, and the systems remain internally coherent, even if fewer participants actively do so. Similarly, Sandbox's LANDs demonstrates that property-based institutions can retain legitimacy and identity value despite reduced usage, as coordination is embedded in structural ownership rather than continuous activity. These cases challenge the assumption that inactivity implies failure, suggesting instead that institutions can persist in latent form, retaining the capacity for future reactivation.</p>
+  <div class="hero-divider"></div>
+  <p class="hero-scroll">Scroll to explore the layers of failure</p>
+</section>
+
+<div id="menu">
+  <div class="menu-header fade-in">
+    <div class="section-tag">Navigate the Exhibition</div>
+    <h2>THE INSTITUTIONAL STACK</h2>
+    <p>Four layers of failure — select a layer to explore</p>
+  </div>
+  <div class="layers-grid">
+    <a href="#layer1" class="layer-card l1 fade-in">
+      <div class="layer-num">01</div><div class="layer-label">Layer I</div>
+      <div class="layer-name">FORMATION FAILURE</div>
+      <div class="layer-def">Institution never forms. Legitimacy fails to emerge from within the system itself — no endogenous norms, no critical mass, no coordination.</div>
+      <div class="layer-exhibits"><span class="layer-exhibit-pill">Women Ape Yacht Club</span><span class="layer-exhibit-pill">FoxGame</span></div>
+      <span class="layer-arrow">→</span>
+    </a>
+    <a href="#layer2" class="layer-card l2 fade-in">
+      <div class="layer-num">02</div><div class="layer-label">Layer II</div>
+      <div class="layer-name">INCENTIVE FAILURE</div>
+      <div class="layer-def">Institution forms but collapses when incentives weaken. Participation built on a single motivating force unravels without replacement.</div>
+      <div class="layer-exhibits"><span class="layer-exhibit-pill">Voxies</span><span class="layer-exhibit-pill">The Plague NFT</span></div>
+      <span class="layer-arrow">→</span>
+    </a>
+    <a href="#layer3" class="layer-card l3 fade-in">
+      <div class="layer-num">03</div><div class="layer-label">Layer III</div>
+      <div class="layer-name">COORDINATION FAILURE</div>
+      <div class="layer-def">Participants exist but fail to align behavior. Identity or ownership persists without mechanisms to translate meaning into sustained action.</div>
+      <div class="layer-exhibits"><span class="layer-exhibit-pill">CryptoNinja Partners</span><span class="layer-exhibit-pill">Sandbox's LANDs</span></div>
+      <span class="layer-arrow">→</span>
+    </a>
+    <a href="#layer4" class="layer-card l4 fade-in">
+      <div class="layer-num">04</div><div class="layer-label">Layer IV</div>
+      <div class="layer-name">ACTIVITY DECLINE</div>
+      <div class="layer-def">Institution remains structurally intact but inactive. Rules and legitimacy persist — the system waits, dormant but not dead.</div>
+      <div class="layer-exhibits"><span class="layer-exhibit-pill">Gods Unchained</span><span class="layer-exhibit-pill">Wolf Game</span></div>
+      <span class="layer-arrow">→</span>
+    </a>
+    <a href="#conclusion" class="layer-card lc fade-in">
+      <div class="layer-num">✦</div><div class="layer-label">Conclusion</div>
+      <div class="layer-name">THE LAYERED PERSPECTIVE</div>
+      <div class="layer-def">NFT projects do not fail uniformly — they collapse at different layers of the institutional stack, each corresponding to a distinct breakdown in coordination, legitimacy, or participation.</div>
+      <span class="layer-arrow">→</span>
+    </a>
+  </div>
+</div>
+
+<section class="exhibit-section" id="layer1">
+<div class="exhibit-section-inner">
+  <div class="exhibit-section-header fade-in">
+    <div>
+      <div class="exhibit-layer-badge"><span class="exhibit-layer-dot" style="background:var(--layer1)"></span><span style="color:var(--layer1)">Layer I — Formation Failure</span></div>
+      <div class="exhibit-section-title" style="color:var(--layer1)">FORMATION<br>FAILURE</div>
+      <p class="exhibit-section-summary">Institutions fail to form when they lack endogenous legitimacy or sufficient participation density. Coordination cannot emerge without internally generated meaning and critical mass.</p>
+    </div>
+    <blockquote class="exhibit-section-quote">"Institutional formation requires more than symbolic similarity — it depends on internally coherent norms and shared experiences that anchor coordination."</blockquote>
+  </div>
+  <div class="exhibit fade-in">
+    <div class="exhibit-img">
+      <img src="https://static.coinall.ltd/cdn/nft/files/collection/435531-logo-v2-webp.gif" alt="Women Ape Yacht Club" loading="lazy">
+      <div class="exhibit-img-overlay"></div><div class="exhibit-num">1A</div>
+      <div class="exhibit-verdict-badge vb-decay">Decaying</div>
+    </div>
+    <div class="exhibit-content">
+      <div class="exhibit-label">Exhibit 1A — Formation Failure</div>
+      <div class="exhibit-name">Women Ape Yacht Club</div>
+      <div class="exhibit-analysis">
+        <p>Women Ape Yacht Club represents a derivative status system that attempts to construct an informal institution through imitation rather than endogenous development. The project seeks to replicate the status signaling and community identity associated with established collections, relying on the assumption that symbolic resemblance can generate similar coordination.</p>
+        <p>The failure is best understood as a failure of institutional formation, where legitimacy never emerges from within the system itself. Because coordination is entirely dependent on an external reference point, participants have no internal reason to align behavior, sustain engagement, or uphold norms. The institution does not degrade; it simply fails to materialize.</p>
+      </div>
+      <button class="exhibit-cta" onclick="openD(EXHIBIT_DATA['0x8dcb8b2d721c022552d826f8bcf2995747248d31'])">View Data Record <span class="exhibit-cta-arrow">→</span></button>
+    </div>
+  </div>
+  <div class="exhibit fade-in">
+    <div class="exhibit-img">
+      <img src="https://static.coinall.ltd/cdn/nft/files/collection/65608-logo.webp" alt="FoxGame" loading="lazy">
+      <div class="exhibit-img-overlay"></div><div class="exhibit-num">1B</div>
+      <div class="exhibit-verdict-badge vb-dead">Dead</div>
+    </div>
+    <div class="exhibit-content">
+      <div class="exhibit-label">Exhibit 1B — Formation Failure</div>
+      <div class="exhibit-name">FoxGame</div>
+      <div class="exhibit-analysis">
+        <p>FoxGame is a proto-institution — an attempt to establish a game-based coordination system that ultimately fails to stabilize into a functioning institution. The project introduces elements of strategic interaction and rule-based gameplay, yet these structures remain incomplete: rules are underdeveloped, participation is limited, and no dominant strategies or behavioral norms emerge to guide interaction.</p>
+        <p>The failure stems from its inability to reach a critical coordination threshold. Without enough users engaging consistently, no Schelling point emerges to anchor behavior. Unlike institutions that collapse after formation, FoxGame never achieves the density of interaction needed to transition into a self-sustaining structure.</p>
+      </div>
+      <button class="exhibit-cta" onclick="openD(EXHIBIT_DATA['0x322f5577807185adaf3fa6512a7ccbbc32670c55'])">View Data Record <span class="exhibit-cta-arrow">→</span></button>
+    </div>
+  </div>
+  <div class="failure-summary l1 fade-in">
+    <div class="failure-summary-lbl">Formation Failure — Summary</div>
+    <div class="failure-summary-text">"Institutions fail to form when they lack endogenous legitimacy or sufficient participation density, as coordination cannot emerge without internally generated meaning and critical mass."</div>
+  </div>
+</div>
+</section>
+
+<section class="exhibit-section" id="layer2">
+<div class="exhibit-section-inner">
+  <div class="exhibit-section-header fade-in">
+    <div>
+      <div class="exhibit-layer-badge"><span class="exhibit-layer-dot" style="background:var(--layer2)"></span><span style="color:var(--layer2)">Layer II — Incentive Failure</span></div>
+      <div class="exhibit-section-title" style="color:var(--layer2)">INCENTIVE<br>FAILURE</div>
+      <p class="exhibit-section-summary">Institutions dependent on a single source of motivation — financial or narrative — collapse when that incentive weakens, unless reinforced by deeper layers such as identity, norms, or structural coordination.</p>
+    </div>
+    <blockquote class="exhibit-section-quote">"Institutions built purely on extrinsic incentives cannot persist once those incentives weaken, unless supported by deeper layers of coordination."</blockquote>
+  </div>
+  <div class="exhibit fade-in">
+    <div class="exhibit-img">
+      <img src="https://static.coinall.ltd/cdn/nft/files/collection/17002-logo.webp" alt="Voxies" loading="lazy">
+      <div class="exhibit-img-overlay"></div><div class="exhibit-num">2A</div>
+      <div class="exhibit-verdict-badge vb-dead">Dead</div>
+    </div>
+    <div class="exhibit-content">
+      <div class="exhibit-label">Exhibit 2A — Incentive Failure</div>
+      <div class="exhibit-name">Voxies</div>
+      <div class="exhibit-analysis">
+        <p>Voxies attempted to construct a play-to-earn labor market. Participation in this informal institution was not governed by identity or shared meaning, but by the expectation of financial return. With norms emerging around efficiency and optimization, coordination was achieved through aligned economic incentives — but remained almost entirely code-driven, with little evidence of social enforcement, cultural reinforcement, or identity formation.</p>
+        <p>The collapse occurred when its incentive layer failed without replacement. Unlike more resilient systems, Voxies lacked mechanisms to sustain engagement beyond profit-seeking behavior. There were no meaningful norms, no identity to anchor users, and no social expectations to stabilize behavior under stress. All coordination mechanisms deteriorated simultaneously.</p>
+      </div>
+      <button class="exhibit-cta" onclick="openD(EXHIBIT_DATA['0xe3435edbf54b5126e817363900234adfee5b3cee'])">View Data Record <span class="exhibit-cta-arrow">→</span></button>
+    </div>
+  </div>
+  <div class="exhibit fade-in">
+    <div class="exhibit-img">
+      <img src="https://static.coinall.ltd/cdn/nft/files/collection/106430-logo.webp" alt="The Plague NFT" loading="lazy">
+      <div class="exhibit-img-overlay"></div><div class="exhibit-num">2B</div>
+      <div class="exhibit-verdict-badge vb-decay">Decaying</div>
+    </div>
+    <div class="exhibit-content">
+      <div class="exhibit-label">Exhibit 2B — Incentive Failure</div>
+      <div class="exhibit-name">The Plague NFT</div>
+      <div class="exhibit-analysis">
+        <p>The Plague NFT built coordination not from financial rewards, but from shared narrative engagement. Institutional norms developed around staying engaged with a collective storyline, and identity became tied to the narrative. However, this coordination mechanism was inherently fragile — entirely dependent on the sustained production of meaning rather than structural or economic reinforcement.</p>
+        <p>As the progression of the story slowed and stalled, the institution failed due to narrative incentive decay. Without new content, participants lost their primary reason to engage, and the narrative ceased to function as a coordinating force. This case demonstrates that narrative-driven institutions require continuous renewal to remain viable.</p>
+      </div>
+      <button class="exhibit-cta" onclick="openD(EXHIBIT_DATA['0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563'])">View Data Record <span class="exhibit-cta-arrow">→</span></button>
+    </div>
+  </div>
+  <div class="failure-summary l2 fade-in">
+    <div class="failure-summary-lbl">Incentive Failure — Summary</div>
+    <div class="failure-summary-text">"Institutions dependent on a single source of motivation collapse when that incentive weakens, unless reinforced by deeper layers such as identity, norms, or structural coordination."</div>
+  </div>
+</div>
+</section>
+
+<section class="exhibit-section" id="layer3">
+<div class="exhibit-section-inner">
+  <div class="exhibit-section-header fade-in">
+    <div>
+      <div class="exhibit-layer-badge"><span class="exhibit-layer-dot" style="background:var(--layer3)"></span><span style="color:var(--layer3)">Layer III — Coordination Failure</span></div>
+      <div class="exhibit-section-title" style="color:var(--layer3)">COORDINATION<br>FAILURE</div>
+      <p class="exhibit-section-summary">Institutions fail at the coordination layer not when identity or structure disappears, but when they cannot translate meaning or ownership into sustained, aligned behavior over time.</p>
+    </div>
+    <blockquote class="exhibit-section-quote">"Cultural institutions fail when identity is not operationalized into coordinated behavior, and when they lose the ability to define and reinforce shared meaning over time."</blockquote>
+  </div>
+  <div class="exhibit fade-in">
+    <div class="exhibit-img">
+      <img src="https://static.coinall.ltd/cdn/nft/files/collection/147503-logo.webp" alt="CryptoNinja Partners" loading="lazy">
+      <div class="exhibit-img-overlay"></div><div class="exhibit-num">3A</div>
+      <div class="exhibit-verdict-badge vb-stress">Stressed / Declining</div>
+    </div>
+    <div class="exhibit-content">
+      <div class="exhibit-label">Exhibit 3A — Coordination Failure</div>
+      <div class="exhibit-name">CryptoNinja Partners</div>
+      <div class="exhibit-analysis">
+        <p>CryptoNinja Partners is a cultural identity system where coordination emerged through alignment with a broader cultural vision, shaped by creators and reinforced through community interaction. Participants were not merely holders but members of a culturally defined group, with implicit norms encouraging engagement, contribution, and long-term commitment. However, these norms remained largely symbolic rather than behavioral.</p>
+        <p>The institution ultimately failed due to a breakdown in coordination driven by the erosion of interpretive clarity. As the project's direction became increasingly ambiguous and cultural leadership weakened, participants lost a shared understanding of what the institution stood for. Identity alone proved insufficient — it neither compelled participation nor stabilized expectations under uncertainty.</p>
+      </div>
+      <button class="exhibit-cta" onclick="openD(EXHIBIT_DATA['0x845a007d9f283614f403a24e3eb3455f720559ca'])">View Data Record <span class="exhibit-cta-arrow">→</span></button>
+    </div>
+  </div>
+  <div class="exhibit fade-in">
+    <div class="exhibit-img">
+      <img src="https://static.coinall.ltd/cdn/nft/files/collection/223-logo.png" alt="Sandbox's LANDs" loading="lazy">
+      <div class="exhibit-img-overlay"></div><div class="exhibit-num">3B</div>
+      <div class="exhibit-verdict-badge vb-decay">Decaying</div>
+    </div>
+    <div class="exhibit-content">
+      <div class="exhibit-label">Exhibit 3B — Coordination Failure</div>
+      <div class="exhibit-name">Sandbox's LANDs</div>
+      <div class="exhibit-analysis">
+        <p>Sandbox's LANDs is a property-based institution with weak usage coordination, where ownership rights are clearly defined but behavioral alignment around usage remains underdeveloped. Norms emerged around long-term holding, development, and strategic location-based speculation — but these norms were weakly enforced, with no strong mechanisms to compel active participation.</p>
+        <p>The decline is best understood as a breakdown in coordination between ownership and usage. While shared expectations around long-term value persist and ownership structures remain intact, repeated participation has significantly decreased. This gap does not reflect a collapse in legitimacy or rules, but a temporal misalignment. The institution persists in a dormant state, retaining identity value despite reduced activity.</p>
+      </div>
+      <button class="exhibit-cta" onclick="openD(EXHIBIT_DATA['0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a'])">View Data Record <span class="exhibit-cta-arrow">→</span></button>
+    </div>
+  </div>
+  <div class="failure-summary l3 fade-in">
+    <div class="failure-summary-lbl">Coordination Failure — Summary</div>
+    <div class="failure-summary-text">"Institutions fail at the coordination layer not when identity or structure disappears, but when they cannot translate meaning or ownership into sustained, aligned behavior over time."</div>
+  </div>
+</div>
+</section>
+
+<section class="exhibit-section" id="layer4">
+<div class="exhibit-section-inner">
+  <div class="exhibit-section-header fade-in">
+    <div>
+      <div class="exhibit-layer-badge"><span class="exhibit-layer-dot" style="background:var(--layer4)"></span><span style="color:var(--layer4)">Layer IV — Activity Decline</span></div>
+      <div class="exhibit-section-title" style="color:var(--layer4)">ACTIVITY<br>DECLINE</div>
+      <p class="exhibit-section-summary">Institutions can persist without high activity if their structural logic and legitimacy remain intact, but long-term vitality depends on sustaining participation through either intrinsic value or balanced incentives.</p>
+    </div>
+    <blockquote class="exhibit-section-quote">"Functional institutions anchored in intrinsic value can endure beyond the volatility of financial markets, maintaining coherence even as external signals of activity diminish."</blockquote>
+  </div>
+  <div class="exhibit fade-in">
+    <div class="exhibit-img">
+      <img src="https://static.coinall.ltd/cdn/nft/files/collection/3762-logo.webp" alt="Gods Unchained" loading="lazy">
+      <div class="exhibit-img-overlay"></div><div class="exhibit-num">4A</div>
+      <div class="exhibit-verdict-badge vb-decay">Decaying</div>
+    </div>
+    <div class="exhibit-content">
+      <div class="exhibit-label">Exhibit 4A — Activity Decline</div>
+      <div class="exhibit-name">Gods Unchained</div>
+      <div class="exhibit-analysis">
+        <p>Gods Unchained represents a competitive game institution in which coordination is structured around skill-based hierarchy, established gameplay norms, and repeated participation loops. Enforcement is embedded directly within gameplay mechanics, while shared expectations around fairness and competition remain coherent. Unlike more fragile NFT systems, behavior here is reinforced through both code and norms, producing a resilient coordination structure.</p>
+        <p>The observed decline is not the result of institutional failure, but rather a decoupling of financial activity from functional participation. While NFT trading volume has decreased significantly, the underlying game and its institutional structure remain intact. The institution persists in a stable, though less visible, state — demonstrating that activity decline does not necessarily imply institutional death.</p>
+      </div>
+      <button class="exhibit-cta" onclick="openD(EXHIBIT_DATA['0x0e3a2a1f2146d86a604adc220b4967a898d7fe07'])">View Data Record <span class="exhibit-cta-arrow">→</span></button>
+    </div>
+  </div>
+  <div class="exhibit fade-in">
+    <div class="exhibit-img">
+      <img src="https://static.coinall.ltd/cdn/nft/files/collection/65476-logo.webp" alt="Wolf Game" loading="lazy">
+      <div class="exhibit-img-overlay"></div><div class="exhibit-num">4B</div>
+      <div class="exhibit-verdict-badge vb-stress">Stressed / Declining</div>
+    </div>
+    <div class="exhibit-content">
+      <div class="exhibit-label">Exhibit 4B — Activity Decline</div>
+      <div class="exhibit-name">Wolf Game</div>
+      <div class="exhibit-analysis">
+        <p>Wolf Game is a predatory labor and risk allocation system, distinguished by deeply integrated game-theoretic coordination mechanisms. The institution is structured around asymmetric roles — sheep produce value while wolves extract it — creating a dynamic environment where participation inherently involves strategic risk. Enforcement is nearly perfect: smart contracts automate penalties and outcomes, while social norms reinforce the legitimacy of these outcomes.</p>
+        <p>The decline is driven by an economic equilibrium breakdown rather than a failure of rules or legitimacy. As token inflation and reward imbalances reduce the attractiveness of participation, rational actors begin to exit. Importantly, the institutional core remains intact: rules are still enforced, norms are still understood. The case illustrates a crucial distinction — even perfectly enforced institutions cannot endure if they fail to maintain incentive alignment.</p>
+      </div>
+      <button class="exhibit-cta" onclick="openD(EXHIBIT_DATA['0xeb834ae72b30866af20a6ce5440fa598bfad3a42'])">View Data Record <span class="exhibit-cta-arrow">→</span></button>
+    </div>
+  </div>
+  <div class="failure-summary l4 fade-in">
+    <div class="failure-summary-lbl">Activity Decline — Summary</div>
+    <div class="failure-summary-text">"Institutions can persist without high activity if their structural logic and legitimacy remain intact, but long-term vitality depends on sustaining participation through either intrinsic value or balanced incentives."</div>
+  </div>
+</div>
+</section>
+
+<section class="exhibit-section" id="conclusion">
+<div class="exhibit-section-inner">
+  <div class="exhibit-section-header fade-in">
+    <div>
+      <div class="exhibit-layer-badge"><span class="exhibit-layer-dot" style="background:var(--acc)"></span><span style="color:var(--acc)">Conclusion</span></div>
+      <div class="exhibit-section-title">THE LAYERED<br>PERSPECTIVE</div>
+      <p class="exhibit-section-summary">Across all exhibits, a consistent pattern emerges: NFT projects do not fail uniformly, but rather collapse at different layers of the institutional stack, each corresponding to a distinct breakdown in coordination.</p>
+    </div>
+    <blockquote class="exhibit-section-quote">"NFT failure is not a binary outcome, but a process of institutional erosion — where different components break down at different times."</blockquote>
+  </div>
+  <div class="section-body fade-in" style="max-width:100%">
+    Formation failures occur when systems never establish endogenous legitimacy or sufficient participation to generate norms, preventing institutions from emerging altogether. Incentive failures arise when participation is driven by a single motivating force — financial or narrative — that weakens over time without being replaced, leading to a rapid unraveling of engagement. Coordination failures reveal that identity or participation alone is insufficient; without mechanisms to align behavior into stable, repeatable patterns, institutions gradually dissolve even when participants remain present. Finally, cases of activity decline demonstrate that institutions can endure beyond visible engagement, provided their underlying rules and legitimacy remain intact.<br><br>
+    Taken together, these findings suggest that institutional durability on blockchain systems depends not on any single factor, but on the interaction between multiple layers of coordination. Systems that rely on external legitimacy, singular incentives, or weakly enforced norms are unable to sustain themselves under stress, while those grounded in structured rules, endogenous meaning, and repeatable participation exhibit greater resilience, even in the absence of market activity.
+  </div>
+</div>
+</section>
+
+<section id="rationale">
+  <div class="rationale-inner">
+    <div class="rationale-label fade-in"><span>The Archive</span>CURATORIAL<br>RATIONALE</div>
+    <div class="rationale-body fade-in">
+      <p>The case studies presented in this mausoleum emerge through a systematic application of the project's institutional death rubric across the full dataset. Projects were evaluated along five dimensions — sanction effectiveness, shared expectations, rule interaction, repeated participation, and identity persistence — to determine whether they functioned as informal institutions and, if so, how they failed.</p>
+      <p>From this broader set, cases were chosen to represent distinct failure modes at different layers of the institutional stack, rather than to confirm a single hypothesis about NFT collapse. Each selected project exemplifies a specific mechanism of breakdown — formation failure, incentive collapse, coordination breakdown, or activity decline — allowing for controlled comparison across structurally different systems.</p>
+      <p>Importantly, selection also accounted for variation in institutional outcomes, including cases that did not fully "die" despite financial decline. By including both fully collapsed and partially persistent systems, the analysis avoids survivorship and confirmation bias, ensuring that institutional failure is not conflated with market performance.</p>
+      <p>This approach enables the mausoleum to function not only as a collection of failed artifacts, but also as a comparative institutional archive, where each exhibit isolates a different breakdown in coordination, legitimacy, or participation.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>THE FLATLINE GALLERY — SPECIAL EXHIBIT</div>
+  <div class="footer-pulse"><span></span><span></span><span></span></div>
+  <div>INSTITUTIONAL DEATH © 2024</div>
+</footer>
+
+<div id="dov">
+  <div class="dmcb"><button class="dmxb" id="dmxb">✕</button></div>
+  <div id="dmodal-wrap"><div id="dmodal"><div id="dmc"></div></div></div>
+</div>
+
+<script>
+var EXHIBIT_DATA={
+  "0x8dcb8b2d721c022552d826f8bcf2995747248d31":{"contract":"0x8dcb8b2d721c022552d826f8bcf2995747248d31","name":"Women Ape Yacht Club","image_url":"https://static.coinall.ltd/cdn/nft/files/collection/435531-logo-v2-webp.gif","opensea_link":"https://opensea.io/assets/ethereum/0x8dcb8b2d721c022552d826f8bcf2995747248d31","verdict":"Data Insufficient (partial score: 10)","rescaled_score":"10","supply":"10000","dune_total_sales":"7096","dune_volume_usd_all_time":"8881170.30","floor":"0.0","floor_currency":"ETH","first_mint_time":"2022-08-05 12:57:45.000 UTC","dune_last_sale_time":"2023-10-30 12:53:59.000 UTC","standard":"ERC-721","tag":"PFP/Collectible","confidence_data_completeness":"LOW","confidence_signal_consistency":"HIGH","confidence_sales_depth":"LOW","confidence_bid_depth":"LOW","confidence_metadata_coverage":"HIGH","confidence_owner_coverage":"MEDIUM","confidence_score_margin":"MEDIUM","metrics":[{"key": "vol", "label": "30d Organic Volume < 1% of Floor Value", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "2", "detail": "no_floor_value – metric skipped"}, {"key": "freq", "label": "< 1 Trade/Day for 60 Consecutive Days", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "longest_zero_trade_streak=60d | days_with_trades=0 | window=60d"}, {"key": "bids", "label": "Active Bids < 1% of Supply", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "active_bids=0 | supply=10000 | ratio=0.000%"}, {"key": "dep", "label": "Top-10 Bid ETH Value < 1% of Floor", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "1", "detail": "no_floor_value -- metric skipped"}, {"key": "twit", "label": "No Twitter Post in 120+ Days", "triggered": "YES", "skipped": "NO", "points": "3", "max_pts": "3", "detail": "days_since_last_post=999.0 | handle=@womenapeyc | threshold=120d"}, {"key": "disc", "label": "Discord Dead or <100 Members", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "3", "detail": "no_discord_invite – metric skipped"}, {"key": "eng", "label": "Avg Engagement < 5 per Tweet", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "2", "detail": "only 1 tweet(s) sampled – metric skipped"}, {"key": "meta", "label": ">50% Tokens Have Broken Metadata", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "3", "detail": "sampled=1000 | broken=7 | broken_pct=0.7% | supply=10000"}, {"key": "list", "label": ">20% of Supply Listed for Sale", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "1", "detail": "listed=0 | supply=10000 | ratio=0.0%"}, {"key": "con", "label": "Top-10 Wallets Hold >50% of Supply", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "1", "detail": "top10_tokens=1125 | total_tokens=10000 | ratio=11.2% | unique_owners=2167"}]},
+  "0x322f5577807185adaf3fa6512a7ccbbc32670c55":{"contract":"0x322f5577807185adaf3fa6512a7ccbbc32670c55","name":"FoxGame","image_url":"https://static.coinall.ltd/cdn/nft/files/collection/65608-logo.webp","opensea_link":"https://opensea.io/assets/ethereum/0x322f5577807185adaf3fa6512a7ccbbc32670c55","verdict":"DEAD","rescaled_score":"11","supply":"10000","dune_total_sales":"6555","dune_volume_usd_all_time":"8852646.38","floor":"0.0","floor_currency":"ETH","first_mint_time":"2021-11-28 19:22:50.000 UTC","dune_last_sale_time":"2023-04-28 09:37:35.000 UTC","standard":"ERC-721","tag":"Gaming/P2E","confidence_data_completeness":"MEDIUM","confidence_signal_consistency":"HIGH","confidence_sales_depth":"LOW","confidence_bid_depth":"LOW","confidence_metadata_coverage":"HIGH","confidence_owner_coverage":"LOW","confidence_score_margin":"MEDIUM","metrics":[{"key": "vol", "label": "30d Organic Volume < 1% of Floor Value", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "2", "detail": "no_floor_value – metric skipped"}, {"key": "freq", "label": "< 1 Trade/Day for 60 Consecutive Days", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "longest_zero_trade_streak=60d | days_with_trades=0 | window=60d"}, {"key": "bids", "label": "Active Bids < 1% of Supply", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "active_bids=0 | supply=10000 | ratio=0.000%"}, {"key": "dep", "label": "Top-10 Bid ETH Value < 1% of Floor", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "1", "detail": "no_floor_value -- metric skipped"}, {"key": "twit", "label": "No Twitter Post in 120+ Days", "triggered": "YES", "skipped": "NO", "points": "3", "max_pts": "3", "detail": "days_since_last_post=1547.1 | handle=@Officialfoxgame | threshold=120d"}, {"key": "disc", "label": "Discord Dead or <100 Members", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "3", "detail": "invite_invalid_or_expired | code=foxgame"}, {"key": "eng", "label": "Avg Engagement < 5 per Tweet", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "2", "detail": "engagement_per_tweet=441.60 | handle=@Officialfoxgame | threshold=5.0"}, {"key": "meta", "label": ">50% Tokens Have Broken Metadata", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "3", "detail": "sampled=1000 | broken=1 | broken_pct=0.1% | supply=10000"}, {"key": "list", "label": ">20% of Supply Listed for Sale", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "1", "detail": "listed=0 | supply=10000 | ratio=0.0%"}, {"key": "con", "label": "Top-10 Wallets Hold >50% of Supply", "triggered": "YES", "skipped": "NO", "points": "1", "max_pts": "1", "detail": "top10_tokens=8370 | total_tokens=10000 | ratio=83.7% | unique_owners=760"}]},
+  "0xe3435edbf54b5126e817363900234adfee5b3cee":{"contract":"0xe3435edbf54b5126e817363900234adfee5b3cee","name":"Voxies","image_url":"https://static.coinall.ltd/cdn/nft/files/collection/17002-logo.webp","opensea_link":"https://opensea.io/assets/ethereum/0xe3435edbf54b5126e817363900234adfee5b3cee","verdict":"DEAD","rescaled_score":"13","supply":"10000","dune_total_sales":"8050","dune_volume_usd_all_time":"24232394.69","floor":"0.0","floor_currency":"ETH","first_mint_time":"2021-03-29 04:07:57.000 UTC","dune_last_sale_time":"2023-02-18 05:21:35.000 UTC","standard":"ERC-721","tag":"Gaming/P2E","confidence_data_completeness":"MEDIUM","confidence_signal_consistency":"HIGH","confidence_sales_depth":"LOW","confidence_bid_depth":"LOW","confidence_metadata_coverage":"HIGH","confidence_owner_coverage":"MEDIUM","confidence_score_margin":"LOW","metrics":[{"key": "vol", "label": "30d Organic Volume < 1% of Floor Value", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "2", "detail": "no_floor_value – metric skipped"}, {"key": "freq", "label": "< 1 Trade/Day for 60 Consecutive Days", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "longest_zero_trade_streak=60d | days_with_trades=0 | window=60d"}, {"key": "bids", "label": "Active Bids < 1% of Supply", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "active_bids=0 | supply=10000 | ratio=0.000%"}, {"key": "dep", "label": "Top-10 Bid ETH Value < 1% of Floor", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "1", "detail": "no_floor_value -- metric skipped"}, {"key": "twit", "label": "No Twitter Post in 120+ Days", "triggered": "YES", "skipped": "NO", "points": "3", "max_pts": "3", "detail": "days_since_last_post=700.0 | handle=@VoxiesNFT | threshold=120d"}, {"key": "disc", "label": "Discord Dead or <100 Members", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "3", "detail": "server='Voxies' | members=17,510 | online=1,055 | code=voxies"}, {"key": "eng", "label": "Avg Engagement < 5 per Tweet", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "2", "detail": "engagement_per_tweet=290.20 | handle=@VoxiesNFT | threshold=5.0"}, {"key": "meta", "label": ">50% Tokens Have Broken Metadata", "triggered": "YES", "skipped": "NO", "points": "5", "max_pts": "3", "detail": "sampled=850 | broken=436 | broken_pct=51.3% | supply=10000"}, {"key": "list", "label": ">20% of Supply Listed for Sale", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "1", "detail": "listed=0 | supply=10000 | ratio=0.0%"}, {"key": "con", "label": "Top-10 Wallets Hold >50% of Supply", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "1", "detail": "top10_tokens=1643 | total_tokens=10000 | ratio=16.4% | unique_owners=2077"}]},
+  "0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563":{"contract":"0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563","name":"The Plague NFT","image_url":"https://static.coinall.ltd/cdn/nft/files/collection/106430-logo.webp","opensea_link":"https://opensea.io/assets/ethereum/0x8c3fb10693b228e8b976ff33ce88f97ce2ea9563","verdict":"Data Insufficient (partial score: 9)","rescaled_score":"9","supply":"11000","dune_total_sales":"17055","dune_volume_usd_all_time":"7634264.01","floor":"0.0","floor_currency":"ETH","first_mint_time":"2022-04-07 17:02:06.000 UTC","dune_last_sale_time":"2023-12-11 17:52:11.000 UTC","standard":"ERC-721","tag":"PFP/Collectible","confidence_data_completeness":"LOW","confidence_signal_consistency":"HIGH","confidence_sales_depth":"LOW","confidence_bid_depth":"LOW","confidence_metadata_coverage":"MEDIUM","confidence_owner_coverage":"LOW","confidence_score_margin":"LOW","metrics":[{"key": "vol", "label": "30d Organic Volume < 1% of Floor Value", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "2", "detail": "no_floor_value – metric skipped"}, {"key": "freq", "label": "< 1 Trade/Day for 60 Consecutive Days", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "longest_zero_trade_streak=60d | days_with_trades=0 | window=60d"}, {"key": "bids", "label": "Active Bids < 1% of Supply", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "active_bids=0 | supply=11000 | ratio=0.000%"}, {"key": "dep", "label": "Top-10 Bid ETH Value < 1% of Floor", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "1", "detail": "no_floor_value -- metric skipped"}, {"key": "twit", "label": "No Twitter Post in 120+ Days", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "3", "detail": "no_twitter_handle_or_no_apify_token – metric skipped"}, {"key": "disc", "label": "Discord Dead or <100 Members", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "3", "detail": "no_discord_invite – metric skipped"}, {"key": "eng", "label": "Avg Engagement < 5 per Tweet", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "2", "detail": "no_twitter_handle_or_no_apify_token – metric skipped"}, {"key": "meta", "label": ">50% Tokens Have Broken Metadata", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "3", "detail": "sampled=1000 | broken=227 | broken_pct=22.7% | supply=11000"}, {"key": "list", "label": ">20% of Supply Listed for Sale", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "1", "detail": "listed=0 | supply=11000 | ratio=0.0%"}, {"key": "con", "label": "Top-10 Wallets Hold >50% of Supply", "triggered": "YES", "skipped": "NO", "points": "1", "max_pts": "1", "detail": "top10_tokens=9014 | total_tokens=11001 | ratio=81.9% | unique_owners=1405"}]},
+  "0x845a007d9f283614f403a24e3eb3455f720559ca":{"contract":"0x845a007d9f283614f403a24e3eb3455f720559ca","name":"CryptoNinja Partners","image_url":"https://static.coinall.ltd/cdn/nft/files/collection/147503-logo.webp","opensea_link":"https://opensea.io/assets/ethereum/0x845a007d9f283614f403a24e3eb3455f720559ca","verdict":"Stressed / Declining","rescaled_score":"5","supply":"26666","dune_total_sales":"19946","dune_volume_usd_all_time":"16568886.73","floor":"0.0","floor_currency":"ETH","first_mint_time":"2022-05-12 17:23:40.000 UTC","dune_last_sale_time":"2023-08-05 01:24:47.000 UTC","standard":"ERC-721","tag":"PFP/Collectible","confidence_data_completeness":"LOW","confidence_signal_consistency":"MEDIUM","confidence_sales_depth":"LOW","confidence_bid_depth":"LOW","confidence_metadata_coverage":"MEDIUM","confidence_owner_coverage":"MEDIUM","confidence_score_margin":"LOW","metrics":[{"key": "vol", "label": "30d Organic Volume < 1% of Floor Value", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "2", "detail": "no_floor_value – metric skipped"}, {"key": "freq", "label": "< 1 Trade/Day for 60 Consecutive Days", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "longest_zero_trade_streak=60d | days_with_trades=0 | window=60d"}, {"key": "bids", "label": "Active Bids < 1% of Supply", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "active_bids=0 | supply=26666 | ratio=0.000%"}, {"key": "dep", "label": "Top-10 Bid ETH Value < 1% of Floor", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "1", "detail": "no_floor_value -- metric skipped"}, {"key": "twit", "label": "No Twitter Post in 120+ Days", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "3", "detail": "days_since_last_post=0.4 | handle=@cnp_ninjadao | threshold=120d"}, {"key": "disc", "label": "Discord Dead or <100 Members", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "3", "detail": "server='Ninja DAO' | members=19,842 | online=774 | code=ninjadao"}, {"key": "eng", "label": "Avg Engagement < 5 per Tweet", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "2", "detail": "only 1 tweet(s) sampled – metric skipped"}, {"key": "meta", "label": ">50% Tokens Have Broken Metadata", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "3", "detail": "sampled=1000 | broken=0 | broken_pct=0.0% | supply=26666"}, {"key": "list", "label": ">20% of Supply Listed for Sale", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "1", "detail": "listed=0 | supply=26666 | ratio=0.0%"}, {"key": "con", "label": "Top-10 Wallets Hold >50% of Supply", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "1", "detail": "top10_tokens=6395 | total_tokens=26666 | ratio=24.0% | unique_owners=5480"}]},
+  "0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a":{"contract":"0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a","name":"Sandbox's LANDs","image_url":"https://static.coinall.ltd/cdn/nft/files/collection/223-logo.png","opensea_link":"https://opensea.io/assets/ethereum/0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a","verdict":"Institutional Decay","rescaled_score":"10","supply":"105400","dune_total_sales":"38852","dune_volume_usd_all_time":"393473136.77","floor":"0.0","floor_currency":"ETH","first_mint_time":"2019-12-04 00:00:00.000 UTC","dune_last_sale_time":"2022-04-24 21:55:15.000 UTC","standard":"ERC-721","tag":"Metaverse/Land","confidence_data_completeness":"LOW","confidence_signal_consistency":"HIGH","confidence_sales_depth":"LOW","confidence_bid_depth":"LOW","confidence_metadata_coverage":"LOW","confidence_owner_coverage":"LOW","confidence_score_margin":"MEDIUM","metrics":[{"key": "vol", "label": "30d Organic Volume < 1% of Floor Value", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "2", "detail": "no_floor_value – metric skipped"}, {"key": "freq", "label": "< 1 Trade/Day for 60 Consecutive Days", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "longest_zero_trade_streak=60d | days_with_trades=0 | window=60d"}, {"key": "bids", "label": "Active Bids < 1% of Supply", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "active_bids=0 | supply=105400 | ratio=0.000%"}, {"key": "dep", "label": "Top-10 Bid ETH Value < 1% of Floor", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "1", "detail": "no_floor_value -- metric skipped"}, {"key": "twit", "label": "No Twitter Post in 120+ Days", "triggered": "YES", "skipped": "NO", "points": "3", "max_pts": "3", "detail": "days_since_last_post=409.1 | handle=@TheSandboxNFTs | threshold=120d"}, {"key": "disc", "label": "Discord Dead or <100 Members", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "3", "detail": "no_discord_invite – metric skipped"}, {"key": "eng", "label": "Avg Engagement < 5 per Tweet", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "2", "detail": "engagement_per_tweet=91.00 | handle=@TheSandboxNFTs | threshold=5.0"}, {"key": "meta", "label": ">50% Tokens Have Broken Metadata", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "3", "detail": "sampled=1000 | broken=321 | broken_pct=32.1% | supply=105400"}, {"key": "list", "label": ">20% of Supply Listed for Sale", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "1", "detail": "listed=0 | supply=105400 | ratio=0.0%"}, {"key": "con", "label": "Top-10 Wallets Hold >50% of Supply", "triggered": "YES", "skipped": "NO", "points": "1", "max_pts": "1", "detail": "top10_tokens=105400 | total_tokens=105418 | ratio=100.0% | unique_owners=27"}]},
+  "0x0e3a2a1f2146d86a604adc220b4967a898d7fe07":{"contract":"0x0e3a2a1f2146d86a604adc220b4967a898d7fe07","name":"Gods Unchained","image_url":"https://static.coinall.ltd/cdn/nft/files/collection/3762-logo.webp","opensea_link":"https://opensea.io/assets/ethereum/0x0e3a2a1f2146d86a604adc220b4967a898d7fe07","verdict":"Institutional Decay","rescaled_score":"10","supply":"6972014","dune_total_sales":"2715","dune_volume_usd_all_time":"16908849.06","floor":"0.0","floor_currency":"ETH","first_mint_time":"2019-11-16 00:00:00.000 UTC","dune_last_sale_time":"2022-05-15 09:26:02.000 UTC","standard":"ERC-721","tag":"Gaming/P2E","confidence_data_completeness":"MEDIUM","confidence_signal_consistency":"HIGH","confidence_sales_depth":"LOW","confidence_bid_depth":"LOW","confidence_metadata_coverage":"LOW","confidence_owner_coverage":"LOW","confidence_score_margin":"MEDIUM","metrics":[{"key": "vol", "label": "30d Organic Volume < 1% of Floor Value", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "2", "detail": "no_floor_value – metric skipped"}, {"key": "freq", "label": "< 1 Trade/Day for 60 Consecutive Days", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "longest_zero_trade_streak=60d | days_with_trades=0 | window=60d"}, {"key": "bids", "label": "Active Bids < 1% of Supply", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "active_bids=0 | supply=6972014 | ratio=0.000%"}, {"key": "dep", "label": "Top-10 Bid ETH Value < 1% of Floor", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "1", "detail": "no_floor_value -- metric skipped"}, {"key": "twit", "label": "No Twitter Post in 120+ Days", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "3", "detail": "days_since_last_post=48.9 | handle=@GodsUnchained | threshold=120d"}, {"key": "disc", "label": "Discord Dead or <100 Members", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "3", "detail": "server='Gods Unchained' | members=25,858 | online=3,941 | code=godsunchained"}, {"key": "eng", "label": "Avg Engagement < 5 per Tweet", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "2", "detail": "engagement_per_tweet=51.40 | handle=@GodsUnchained | threshold=5.0"}, {"key": "meta", "label": ">50% Tokens Have Broken Metadata", "triggered": "YES", "skipped": "NO", "points": "5", "max_pts": "3", "detail": "sampled=1000 | broken=1000 | broken_pct=100.0% | supply=6972014"}, {"key": "list", "label": ">20% of Supply Listed for Sale", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "1", "detail": "listed=0 | supply=6972014 | ratio=0.0%"}, {"key": "con", "label": "Top-10 Wallets Hold >50% of Supply", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "1", "detail": "top10_tokens=462338 | total_tokens=2500000 | ratio=18.5% | unique_owners=5928"}]},
+  "0xeb834ae72b30866af20a6ce5440fa598bfad3a42":{"contract":"0xeb834ae72b30866af20a6ce5440fa598bfad3a42","name":"Wolf Game","image_url":"https://static.coinall.ltd/cdn/nft/files/collection/65476-logo.webp","opensea_link":"https://opensea.io/assets/ethereum/0xeb834ae72b30866af20a6ce5440fa598bfad3a42","verdict":"Stressed / Declining","rescaled_score":"6","supply":"13809","dune_total_sales":"8872","dune_volume_usd_all_time":"57989509.66","floor":"0.0","floor_currency":"ETH","first_mint_time":"2021-11-18 09:56:21.000 UTC","dune_last_sale_time":"2022-05-05 14:11:22.000 UTC","standard":"ERC-721","tag":"Gaming/P2E","confidence_data_completeness":"MEDIUM","confidence_signal_consistency":"HIGH","confidence_sales_depth":"LOW","confidence_bid_depth":"LOW","confidence_metadata_coverage":"MEDIUM","confidence_owner_coverage":"LOW","confidence_score_margin":"MEDIUM","metrics":[{"key": "vol", "label": "30d Organic Volume < 1% of Floor Value", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "2", "detail": "no_floor_value – metric skipped"}, {"key": "freq", "label": "< 1 Trade/Day for 60 Consecutive Days", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "longest_zero_trade_streak=60d | days_with_trades=0 | window=60d"}, {"key": "bids", "label": "Active Bids < 1% of Supply", "triggered": "YES", "skipped": "NO", "points": "2", "max_pts": "2", "detail": "active_bids=0 | supply=13809 | ratio=0.000%"}, {"key": "dep", "label": "Top-10 Bid ETH Value < 1% of Floor", "triggered": "NO", "skipped": "YES", "points": "0", "max_pts": "1", "detail": "no_floor_value -- metric skipped"}, {"key": "twit", "label": "No Twitter Post in 120+ Days", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "3", "detail": "days_since_last_post=3.4 | handle=@wolfdotgame | threshold=120d"}, {"key": "disc", "label": "Discord Dead or <100 Members", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "3", "detail": "server='Wolf Game' | members=16,952 | online=1,292 | code=wolfgame"}, {"key": "eng", "label": "Avg Engagement < 5 per Tweet", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "2", "detail": "engagement_per_tweet=42.40 | handle=@wolfdotgame | threshold=5.0"}, {"key": "meta", "label": ">50% Tokens Have Broken Metadata", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "3", "detail": "sampled=1000 | broken=0 | broken_pct=0.0% | supply=13809"}, {"key": "list", "label": ">20% of Supply Listed for Sale", "triggered": "NO", "skipped": "NO", "points": "0", "max_pts": "1", "detail": "listed=0 | supply=13809 | ratio=0.0%"}, {"key": "con", "label": "Top-10 Wallets Hold >50% of Supply", "triggered": "YES", "skipped": "NO", "points": "1", "max_pts": "1", "detail": "top10_tokens=13807 | total_tokens=13809 | ratio=100.0% | unique_owners=12"}]}
+};
+
+function esc(s){return s?String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'):''}
+function fU(v){var n=parseFloat(v);if(isNaN(n))return '--';if(n>=1e6)return '$'+(n/1e6).toFixed(2)+'M';if(n>=1e3)return '$'+(n/1e3).toFixed(1)+'k';return '$'+n.toFixed(0)}
+
+function openD(nft){
+  var dead=nft.verdict==='DEAD',decay=nft.verdict==='Institutional Decay',stress=nft.verdict.startsWith('Stressed'),insuf=nft.verdict.startsWith('Data Insufficient');
+  var bdClass=dead?'bdd':decay?'bdc':stress?'bds':'bdi';
+  var bdLabel=dead?'Dead':decay?'Decaying':stress?'Stressed / Declining':'Data Insufficient';
+  var sup=parseInt(nft.supply||0),hi=sup>20000;
+  var mintYear=nft.first_mint_time?nft.first_mint_time.slice(0,4):'--';
+  var mintDate=nft.first_mint_time?nft.first_mint_time.slice(0,10):'--';
+  var lastSale=nft.dune_last_sale_time?nft.dune_last_sale_time.slice(0,10):'unknown';
+  var osH=nft.opensea_link?'<a href="'+esc(nft.opensea_link)+'" target="_blank" rel="noopener">View on OpenSea</a> <span style="color:var(--t3)">(may be delisted)</span>':'<span style="color:var(--t3)">No OpenSea link</span>';
+  var ci=[{l:'Data',v:nft.confidence_data_completeness},{l:'Signals',v:nft.confidence_signal_consistency},{l:'Sales',v:nft.confidence_sales_depth},{l:'Bids',v:nft.confidence_bid_depth},{l:'Metadata',v:nft.confidence_metadata_coverage},{l:'Ownership',v:nft.confidence_owner_coverage},{l:'Margin',v:nft.confidence_score_margin}];
+  var cf='';ci.forEach(function(c){var k=c.v?c.v.charAt(0):'L';cf+='<div class="cfi"><div class="cfl">'+c.l+'</div><div class="cfv '+k+'">'+(c.v||'--')+'</div></div>';});
+  var insufBanner=insuf?'<div class="ts-insuf"><span class="ts-insuf-lbl">Notice</span><span class="ts-insuf-val">'+esc(nft.verdict)+'</span></div>':'';
+  document.getElementById('dmc').innerHTML=
+    '<div><div class="ts-arch-top"><div class="ts-arch-icon"><div class="ts-cv"></div><div class="ts-ch"></div><div class="ts-cdot"></div></div></div>'+
+    '<div class="ts-body">'+
+    '<div class="ts-hl"><div class="ts-hl-rule"></div><div class="ts-hl-txt">Here Lies</div><div class="ts-hl-rule"></div></div>'+
+    '<div class="ts-name">'+esc(nft.name)+'</div>'+
+    '<div class="ts-dates">'+mintYear+' &mdash; 2024</div>'+
+    '<div class="ts-badges"><span class="mbd '+bdClass+'">'+bdLabel+'</span><span class="mbd" style="background:rgba(0,0,0,.5);color:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.08)">'+esc(nft.tag)+'</span></div>'+
+    insufBanner+
+    '<div class="ts-orn">&mdash; &dagger; &mdash;</div>'+
+    '<div class="mct"><a href="https://etherscan.io/address/'+esc(nft.contract)+'" target="_blank" rel="noopener">'+esc(nft.contract)+'</a></div>'+
+    '<div class="mos">'+osH+'</div>'+
+    '<div class="ts-div"></div>'+
+    '<div class="ts-grid">'+
+    '<div class="mi"><div class="ml">Standard</div><div class="mv">'+esc(nft.standard)+'</div></div>'+
+    '<div class="mi"><div class="ml">Supply</div><div class="mv '+(hi?'rd':'')+'">'+sup.toLocaleString()+(hi?' HIGH':'')+'</div></div>'+
+    '<div class="mi"><div class="ml">Born</div><div class="mv">'+mintDate+'</div></div>'+
+    '<div class="mi"><div class="ml">Last Transaction</div><div class="mv">'+lastSale+'</div></div>'+
+    '<div class="mi"><div class="ml">Lifetime Volume</div><div class="mv ac">'+fU(nft.dune_volume_usd_all_time)+'</div></div>'+
+    '<div class="mi"><div class="ml">Total Sales</div><div class="mv">'+parseInt(nft.dune_total_sales||0).toLocaleString()+'</div></div>'+
+    '<div class="mi"><div class="ml">Final Floor</div><div class="mv">'+(nft.floor||'0.0')+' '+(nft.floor_currency||'ETH')+'</div></div>'+
+    
+    '</div>'+
+    '<div class="mmt2">Forensic Signal Analysis &nbsp;&middot;&nbsp; Hover for detail</div>'+
+        '<div class="mch">'+
+        (function(){var ch='';(nft.metrics||[]).forEach(function(m){
+          var cl=m.skipped==='YES'?'cskip':(m.triggered==='YES'?'chit':'cmiss');
+          var pt=m.skipped==='YES'?'SKIP':('+'+(m.points||0)+'/'+(m.max_pts||0));
+          var det=String(m.detail||'').replace(/[&]/g,'&amp;').replace(/</g,'&lt;').replace(/\|/g,'<br>');
+          ch+='<span class="chip '+cl+'"><span class="cdot"></span><span>'+m.key.toUpperCase()+'</span><span class="cpt">'+pt+'</span><div class="ctip"><strong>'+m.label+'</strong><br>'+det+'</div></span>';
+        });return ch;})()+'</div>'+
+        '<div class="mmt">Confidence Levels</div>'+
+    '<div class="cfr">'+cf+'</div>'+
+    '<div class="ts-rip">R . I . P .</div>'+
+    '<div class="ts-base"></div>'+
+    '</div></div>';
+  document.getElementById('dov').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeD(){document.getElementById('dov').classList.remove('on');document.body.style.overflow='';}
+document.getElementById('dmxb').addEventListener('click',closeD);
+document.getElementById('dov').addEventListener('click',function(e){if(e.target===this||e.target===document.getElementById('dmodal-wrap'))closeD();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeD();});
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.fade-in').forEach(function(el){io.observe(el);});
+</script>
+</body></html>
